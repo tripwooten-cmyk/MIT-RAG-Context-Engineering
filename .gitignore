@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 detailedEmails/
 chroma_db/
+~$*.docx
