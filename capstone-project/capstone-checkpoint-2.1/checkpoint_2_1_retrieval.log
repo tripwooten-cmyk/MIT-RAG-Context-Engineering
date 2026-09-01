@@ -1,0 +1,52 @@
+[2026-08-31T20:33:46] QUERY 1: According to SPARLING, what accuracy did the authors report for localizing intermediate states on synthetic domains?
+retrieved:
+1. DBLP_journals_corr_abs-2302-01976.pdf, page 1 | BM25=38.423
+2. conf_iclr_gupta2025sparling.pdf, page 1 | BM25=38.121
+3. DBLP_conf_cav_BraggFRS21.pdf, page 42 | BM25=32.630
+
+answer=According to SPARLING, the authors report that on synthetic domains they could “precisely localize the intermediate states up to feature permutation with **>90% accuracy**,” even though they only train end-to-end.
+------------------------------------------------------------------------
+[2026-08-31T20:33:47] QUERY 2: How does The Sketching Approach to Program Synthesis describe the role of holes and specifications?
+retrieved:
+1. DBLP_conf_cav_BraggFRS21.pdf, page 875 | BM25=39.755
+2. DBLP_conf_aplas_Solar-Lezama09.pdf, page 1 | BM25=38.750
+3. DBLP_conf_pldi_Solar-LezamaRBE05.pdf, page 8 | BM25=36.002
+
+answer=In *The Sketching Approach to Program Synthesis*, a sketch is described as a **partial program** that leaves some details unspecified:
+
+- “the programmer uses partial programs to describe the desired implementation strategy, and leaves the low-level details of the implementation to an automated synthesis procedure.”
+- “a sketch—a partial program that encodes the structure of a solution while leaving its low-level details unspecified.”
+
+The specifications are provided separately to guide synthesis:
+
+- “In addition to the sketch, programmers provide the synthesizer with either a reference implementation or a set of test routines that the synthesized code must pass.”
+- “The Sketch synthesis engine is able to derive the missing details in the sketch to produce a working implementation that satisfies the correctness criteria established by the programmer.”
+
+So, holes in a sketch represent the missing implementation details, and the specification/reference/tests define what the completed program must satisfy.
+------------------------------------------------------------------------
+[2026-08-31T20:33:49] QUERY 3: Compare how SPARLING and The Sketching Approach to Program Synthesis use supervision or specification to guide learning or synthesis.
+retrieved:
+1. DBLP_journals_corr_abs-2302-01976.pdf, page 1 | BM25=43.197
+2. conf_iclr_gupta2025sparling.pdf, page 1 | BM25=43.049
+3. DBLP_conf_cav_BraggFRS21.pdf, page 876 | BM25=41.540
+
+answer=Based on the provided documents, the two works use guidance in different ways:
+
+- **SPARLING** is trained with **end-to-end supervision**. The abstract says it aims to identify sparse latent motifs “**exclusively by reducing end-to-end error**,” and the introduction emphasizes learning “**from end-to-end supervision via backpropagation**.” It does **not** rely on direct supervision of the intermediate concepts.
+
+- **The Sketching Approach to Program Synthesis** is driven by an explicit **specification**. The document says PAYNT “**takes a sketch of probabilistic programs, a family of Markov chains (MCs), and a specification, and finds a family member ... that ... satisfies the specification**.” So here the synthesis process is guided by a formal specification rather than labeled end-to-end outputs.
+
+In short: **SPARLING uses end-to-end error signal to learn intermediate concepts**, while **the sketching approach uses an explicit specification to synthesize a program/design that satisfies it**.
+------------------------------------------------------------------------
+[2026-08-31T20:33:51] QUERY 4: Which papers describe systems that complete missing parts of a program from examples or constraints?
+retrieved:
+1. DBLP_conf_snapl_2015.pdf, page 161 | BM25=33.513
+2. DBLP_journals_corr_GaneshMSR13.pdf, page 12 | BM25=32.639
+3. DBLP_conf_snapl_2015.pdf, page 155 | BM25=31.600
+
+answer=The provided documents do not identify any specific papers that “describe systems that complete missing parts of a program from examples or constraints.”
+
+What they do say is only general context about the corpus and topics. For example, the SNAPL paper discusses “topic models” over programming-language literature and says it has analyzed papers in areas like “type systems,” “compiler optimizations,” and “object-oriented software development,” but it does not name a paper matching your description.
+
+If you want, I can help infer likely candidate papers from the cited literature only if you provide more documents.
+------------------------------------------------------------------------
