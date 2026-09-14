@@ -1,0 +1,42 @@
+[
+  {
+    "id": "V1",
+    "answer": "SPARLING reports greater than 90% accuracy, up to feature permutation, on synthetic domains [conf_iclr_gupta2025sparling.pdf, page 1].",
+    "expected_pass": true,
+    "context_question": "Q1",
+    "original_actual": "pass",
+    "refined_actual": "pass"
+  },
+  {
+    "id": "V2",
+    "answer": "SPARLING reports exactly 98% accuracy on synthetic domains [conf_iclr_gupta2025sparling.pdf, page 1].",
+    "expected_pass": false,
+    "context_question": "Q1",
+    "original_actual": "pass",
+    "refined_actual": "fail"
+  },
+  {
+    "id": "V3",
+    "answer": "SPARLING reports greater than 90% accuracy [DBLP_conf_cav_BraggFRS21.pdf, page 42].",
+    "expected_pass": false,
+    "context_question": "Q1",
+    "original_actual": "pass",
+    "refined_actual": "pass"
+  },
+  {
+    "id": "V4",
+    "answer": "SPARLING guarantees perfect localization on every real-world task [conf_iclr_gupta2025sparling.pdf, page 1].",
+    "expected_pass": false,
+    "context_question": "Q1",
+    "original_actual": "fail",
+    "refined_actual": "fail"
+  },
+  {
+    "id": "V5",
+    "answer": "The provided evidence contains no information about the reported synthetic-domain accuracy.",
+    "expected_pass": false,
+    "context_question": "Q1",
+    "original_actual": "fail",
+    "refined_actual": "fail"
+  }
+]

@@ -5,7 +5,7 @@
 
 ## Repository status
 
-This repository is maintained locally through Module 2. It has no remote connection. A GitHub remote will be created and submitted only with the final capstone submission in Module 8.
+This repository is maintained locally through Checkpoint 3.1. It has no remote connection. A GitHub remote will be created and submitted only with the final capstone submission in Module 8.
 
 ## Capstone scenario
 
@@ -45,6 +45,35 @@ Authoritative files:
 - `capstone-project/capstone-checkpoint-2.1/checkpoint_2_1_retrieval.log`
 
 The original starter and blank worksheet are retained separately for provenance.
+
+
+### Checkpoint 3.1 — Evaluation infrastructure and baseline diagnosis
+
+The unchanged Research Paper Navigator baseline was evaluated using four
+saved answers and five constructed evaluator-validation cases through
+MIT's RAGAS/OpenRouter workflow.
+
+- Original correctness: 3/4 baseline answers passed.
+- Refined evidence-and-attribution metric: 2/4 passed.
+- Defects detected: original 2/4; refined 3/4.
+- Both metrics accepted the supported control and missed the wrong citation.
+- Q4 abstention received conflicting verdicts; these were preserved.
+- These small-sample results do not establish general accuracy.
+
+Authoritative checkpoint folder:
+`capstone-project/capstone-checkpoint-3.1/`
+
+- Approved worksheet: `Council_Wooten_Required_Capstone_Checkpoint_3_1_Worksheet.docx`
+- Evaluator: `MIT_Checkpoint_3_1_Evaluation/evaluate_research_papers.py`
+- MIT reference scripts: `MIT_Checkpoint_3_1_Evaluation/reference/`
+- Captured inputs: `MIT_Checkpoint_3_1_Evaluation/input/`
+- Actual results and configuration: `MIT_Checkpoint_3_1_Evaluation/results/mit_eval_01/`
+
+The evaluator imports the supplied MIT solution. Preserve that directory
+structure. Input and code hashes are recorded in run_config.json.
+The worksheet alone is uploaded for Checkpoint 3.1; repository materials
+support the final Module 8 submission. Platform submission is not confirmed
+by this Git commit.
 
 ## Dataset governance
 

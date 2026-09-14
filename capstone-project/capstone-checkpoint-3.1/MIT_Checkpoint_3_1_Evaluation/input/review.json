@@ -1,0 +1,89 @@
+{
+  "evidence_sha256": "bf8c941a469d287b1217240cba0c8ccacc3c95be580c047afcd1d8550e444cb7",
+  "validation_sha256": "613d31f9395eb8fada52eaa55a66a19ca638c632ac09ac8f7e1f5ae59b1205b5",
+  "reviewer": "",
+  "reviewed_at": "",
+  "gold_notes_verified": false,
+  "validation_context_verified": false,
+  "queries": [
+    {
+      "id": "Q1",
+      "expected_sources": [],
+      "relevant_retrieved_ids": [],
+      "rationale": "",
+      "complete_evidence": null,
+      "useful_rank1": null,
+      "correct_answer": null,
+      "grounded": null,
+      "attribution_correct": null,
+      "abstained": null,
+      "abstention_justified": null
+    },
+    {
+      "id": "Q2",
+      "expected_sources": [],
+      "relevant_retrieved_ids": [],
+      "rationale": "",
+      "complete_evidence": null,
+      "useful_rank1": null,
+      "correct_answer": null,
+      "grounded": null,
+      "attribution_correct": null,
+      "abstained": null,
+      "abstention_justified": null
+    },
+    {
+      "id": "Q3",
+      "expected_sources": [],
+      "relevant_retrieved_ids": [],
+      "rationale": "",
+      "complete_evidence": null,
+      "useful_rank1": null,
+      "correct_answer": null,
+      "grounded": null,
+      "attribution_correct": null,
+      "abstained": null,
+      "abstention_justified": null
+    },
+    {
+      "id": "Q4",
+      "expected_sources": [],
+      "relevant_retrieved_ids": [],
+      "rationale": "",
+      "complete_evidence": null,
+      "useful_rank1": null,
+      "correct_answer": null,
+      "grounded": null,
+      "attribution_correct": null,
+      "abstained": null,
+      "abstention_justified": null
+    }
+  ],
+  "validation": [
+    {
+      "id": "V1",
+      "actual_pass": null,
+      "rationale": ""
+    },
+    {
+      "id": "V2",
+      "actual_pass": null,
+      "rationale": ""
+    },
+    {
+      "id": "V3",
+      "actual_pass": null,
+      "rationale": ""
+    },
+    {
+      "id": "V4",
+      "actual_pass": null,
+      "rationale": ""
+    },
+    {
+      "id": "V5",
+      "actual_pass": null,
+      "rationale": ""
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "original_correctness": {
+    "baseline_pass_rate": {
+      "numerator": 3,
+      "denominator": 4,
+      "percent": 75.0
+    },
+    "seeded_defects_detected": {
+      "numerator": 2,
+      "denominator": 4,
+      "percent": 50.0
+    },
+    "supported_controls_accepted": {
+      "numerator": 1,
+      "denominator": 1,
+      "percent": 100.0
+    }
+  },
+  "grounded_correctness": {
+    "baseline_pass_rate": {
+      "numerator": 2,
+      "denominator": 4,
+      "percent": 50.0
+    },
+    "seeded_defects_detected": {
+      "numerator": 3,
+      "denominator": 4,
+      "percent": 75.0
+    },
+    "supported_controls_accepted": {
+      "numerator": 1,
+      "denominator": 1,
+      "percent": 100.0
+    }
+  },
+  "note": "Judge pass rates are not retrieval recall or proof of task completion. Refined pass may include justified abstention. Validation expectations are reference judgments, not hidden facts."
+}
