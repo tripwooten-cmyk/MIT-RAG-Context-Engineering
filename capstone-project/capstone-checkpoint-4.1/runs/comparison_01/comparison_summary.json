@@ -1,0 +1,27 @@
+{
+  "baseline": {
+    "original_correctness": {
+      "passed": 2,
+      "total": 4
+    },
+    "grounded_correctness": {
+      "passed": 1,
+      "total": 4
+    },
+    "mean_pipeline_seconds": 2.012578343244968,
+    "application_llm_calls": 4
+  },
+  "decomposition": {
+    "original_correctness": {
+      "passed": 3,
+      "total": 4
+    },
+    "grounded_correctness": {
+      "passed": 3,
+      "total": 4
+    },
+    "mean_pipeline_seconds": 3.187046729501162,
+    "application_llm_calls": 8
+  },
+  "interpretation": "Fresh paired comparison; retain historical 3.1 separately. Judge passes are not source recall. Timings exclude extraction and judging."
+}

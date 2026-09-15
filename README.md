@@ -119,3 +119,32 @@ shasum -a 256 -c ARTIFACT_MANIFEST.sha256
 ## Version-control policy
 
 Each completed checkpoint receives a descriptive local Git commit. Files are inspected before staging and committing. The repository will remain local until the Module 8 GitHub submission requirement.
+
+## Checkpoint 4.1 — Advanced retrieval evaluation
+
+Scenario: Research Paper Navigator. Query decomposition and summed BM25
+score fusion were evaluated over the same 153 PDFs and 6,059 readable
+pages, using four questions and three final pages per answer.
+
+Fresh comparison results:
+- Original correctness: baseline 2/4; decomposition 3/4.
+- Grounded correctness: baseline 1/4; decomposition 3/4.
+- Mean retrieval-plus-answer time: 2.01 versus 3.19 seconds.
+- Q4 improved; Q3 remained unresolved after fusion dropped needed evidence.
+
+These are single-run judge results, not retrieval recall. Historical
+Checkpoint 3.1 evidence remains separate.
+
+Authoritative files under capstone-project/capstone-checkpoint-4.1:
+- Council_Wooten_Required_Capstone_Checkpoint_4_1_Worksheet.docx
+- capstone_checkpoint_4_1_advanced_retrieval_solution.py
+- runs/comparison_01/comparison_results.json
+- runs/comparison_01/comparison_summary.json
+- runs/comparison_01/run_config.json
+
+The solution imports the existing Checkpoint 2.1 baseline and Checkpoint
+3.1 evaluation components. Preserve their repository locations.
+Run configuration records code hashes, corpus hashes, prompts, models,
+and package versions. The worksheet alone is uploaded for this checkpoint;
+repository materials support Module 8. This commit does not confirm
+learning-platform submission.
