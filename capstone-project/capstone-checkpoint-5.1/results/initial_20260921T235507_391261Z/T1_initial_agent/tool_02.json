@@ -1,0 +1,7 @@
+{
+  "action": "open_page",
+  "source": "DBLP_journals_corr_abs-2206-06164.pdf",
+  "page": 1,
+  "reason": "Need the title/abstract page of the synthesis paper to see whether it is the Sketching Approach to Program Synthesis and how specification guides it.",
+  "status": "found"
+}

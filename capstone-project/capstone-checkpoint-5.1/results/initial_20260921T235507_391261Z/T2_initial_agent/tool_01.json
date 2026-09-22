@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "SYNQUID inputs specifications constrain program synthesis MYTH system specification guide synthesis",
+  "reason": "Need source pages comparing both systems’ guiding inputs/specifications and constraints.",
+  "hits": [
+    {
+      "id": "DBLP_conf_pldi_PolikarpovaKS16.pdf, page 16",
+      "score": 26.095888154983676
+    },
+    {
+      "id": "DBLP_journals_corr_PolikarpovaS15.pdf, page 16",
+      "score": 26.095888154983676
+    },
+    {
+      "id": "DBLP_conf_pldi_PolikarpovaKS16.pdf, page 15",
+      "score": 23.375198811284655
+    }
+  ]
+}

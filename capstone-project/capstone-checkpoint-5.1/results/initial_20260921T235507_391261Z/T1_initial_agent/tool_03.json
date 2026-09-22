@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "\"Sketching Approach to Program Synthesis\" sketching specification learning supervision program synthesis",
+  "reason": "Need the exact paper and the page discussing how sketches/specification guide synthesis, since the current file may be a different synthesis paper.",
+  "hits": [
+    {
+      "id": "DBLP_conf_aplas_Solar-Lezama09.pdf, page 1",
+      "score": 30.433887698388492
+    },
+    {
+      "id": "DBLP_journals_pvldb_SinghMEMPQST17.pdf, page 14",
+      "score": 27.615940702354333
+    },
+    {
+      "id": "DBLP_journals_corr_abs-2006-08381.pdf, page 18",
+      "score": 26.591692449535664
+    }
+  ]
+}

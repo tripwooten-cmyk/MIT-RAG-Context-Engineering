@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "\"The Sketching Approach to Program Synthesis\" sketch learning infer program sketches",
+  "reason": "Need both papers’ text to compare definitions and completion methods.",
+  "hits": [
+    {
+      "id": "DBLP_conf_nips_EllisRST18.pdf, page 9",
+      "score": 35.60599319610455
+    },
+    {
+      "id": "DBLP_conf_pldi_Solar-LezamaRBE05.pdf, page 8",
+      "score": 33.60988977503594
+    },
+    {
+      "id": "DBLP_conf_aplas_Solar-Lezama09.pdf, page 1",
+      "score": 33.55330694318144
+    }
+  ]
+}

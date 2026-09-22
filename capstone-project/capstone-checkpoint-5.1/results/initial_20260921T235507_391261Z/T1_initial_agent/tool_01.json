@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "SPARLING supervision specification learning synthesis Sketching Approach to Program Synthesis guide learning specification",
+  "reason": "Need locate both papers and the pages describing how each uses supervision/specification.",
+  "hits": [
+    {
+      "id": "DBLP_journals_corr_abs-2302-01976.pdf, page 1",
+      "score": 30.317004270296348
+    },
+    {
+      "id": "conf_iclr_gupta2025sparling.pdf, page 1",
+      "score": 30.078993320129165
+    },
+    {
+      "id": "DBLP_journals_corr_abs-2206-06164.pdf, page 23",
+      "score": 27.228824163091197
+    }
+  ]
+}

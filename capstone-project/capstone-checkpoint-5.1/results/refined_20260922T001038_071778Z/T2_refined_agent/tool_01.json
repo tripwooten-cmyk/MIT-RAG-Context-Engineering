@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "SYNQUID program synthesis type specifications input constraints MYTH synthesis specifications paper",
+  "reason": "Need the two papers and their specification mechanisms.",
+  "hits": [
+    {
+      "id": "DBLP_conf_pldi_PolikarpovaKS16.pdf, page 16",
+      "score": 32.12281161501163
+    },
+    {
+      "id": "DBLP_journals_corr_PolikarpovaS15.pdf, page 16",
+      "score": 32.12281161501163
+    },
+    {
+      "id": "DBLP_conf_cav_BraggFRS21.pdf, page 869",
+      "score": 29.048606815787757
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "\"The Sketching Approach to Program Synthesis\" supervision specification PDF",
+  "reason": "Find the sketching paper and evidence about specification-guided synthesis.",
+  "hits": [
+    {
+      "id": "DBLP_conf_icml_GuJLSESS25.pdf, page 55",
+      "score": 25.238876403888895
+    },
+    {
+      "id": "DBLP_conf_aplas_Solar-Lezama09.pdf, page 1",
+      "score": 24.63044749298126
+    },
+    {
+      "id": "DBLP_conf_aplas_Solar-Lezama09.pdf, page 2",
+      "score": 21.927710088172955
+    }
+  ]
+}

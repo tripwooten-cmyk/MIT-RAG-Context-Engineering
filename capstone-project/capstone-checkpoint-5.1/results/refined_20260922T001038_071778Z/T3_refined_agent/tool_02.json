@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "\"Learning to Infer Program Sketches\" sketch partial program inferred from examples",
+  "reason": "Need the second paper’s definition and completion method.",
+  "hits": [
+    {
+      "id": "DBLP_conf_icml_NyeHTS19.pdf, page 3",
+      "score": 30.024170459843138
+    },
+    {
+      "id": "DBLP_journals_corr_abs-1902-06349.pdf, page 3",
+      "score": 30.012799086337516
+    },
+    {
+      "id": "DBLP_conf_icml_NyeHTS19.pdf, page 2",
+      "score": 29.96321335015898
+    }
+  ]
+}

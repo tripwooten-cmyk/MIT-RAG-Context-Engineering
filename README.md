@@ -148,3 +148,9 @@ Run configuration records code hashes, corpus hashes, prompts, models,
 and package versions. The worksheet alone is uploaded for this checkpoint;
 repository materials support Module 8. This commit does not confirm
 learning-platform submission.
+
+<!-- module-5-capstone -->
+## Module 5: Agent-based RAG
+
+[Checkpoint 5.1](capstone-project/capstone-checkpoint-5.1/README_CHECKPOINT_5_1.md) contains the completed worksheet, initial and refined implementations, recorded experiments, and evidence review for the 153-paper Research Paper Navigator. The worksheet is the checkpoint upload; code and evidence support the final capstone.
+<!-- /module-5-capstone -->

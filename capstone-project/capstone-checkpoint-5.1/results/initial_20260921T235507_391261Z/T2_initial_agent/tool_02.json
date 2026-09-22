@@ -1,0 +1,7 @@
+{
+  "action": "open_page",
+  "source": "DBLP_conf_pldi_PolikarpovaKS16.pdf",
+  "page": 15,
+  "reason": "Page 15 contains the comparison table and text contrasting SYNQUID with MYTH, including the kind of specifications each uses and how they affect synthesis.",
+  "status": "found"
+}

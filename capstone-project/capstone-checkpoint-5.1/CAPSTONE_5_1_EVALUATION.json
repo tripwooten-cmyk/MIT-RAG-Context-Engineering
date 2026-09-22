@@ -1,0 +1,212 @@
+{
+  "method": "Assistant-assisted qualitative review of captured passages and traces; no numeric accuracy score assigned.",
+  "results": [
+    {
+      "task": {
+        "id": "T0",
+        "question": "According to SPARLING, what accuracy did the authors report for localizing intermediate states on synthetic domains? Cite the supporting filename and page number.",
+        "criteria": [
+          "Identify the SPARLING source correctly",
+          "Report the accuracy with its experimental scope",
+          "Provide a supporting filename and page number"
+        ]
+      },
+      "mode": "fixed",
+      "application_model_calls": 1,
+      "seconds_retrieval_planning_answer": 2.438501249998808,
+      "stop_reason": "fixed_single_pass"
+    },
+    {
+      "task": {
+        "id": "T0",
+        "question": "According to SPARLING, what accuracy did the authors report for localizing intermediate states on synthetic domains? Cite the supporting filename and page number.",
+        "criteria": [
+          "Identify the SPARLING source correctly",
+          "Report the accuracy with its experimental scope",
+          "Provide a supporting filename and page number"
+        ]
+      },
+      "mode": "initial_agent",
+      "application_model_calls": 3,
+      "seconds_retrieval_planning_answer": 4.179215707932599,
+      "stop_reason": "planner_answer"
+    },
+    {
+      "task": {
+        "id": "T1",
+        "question": "Compare how SPARLING and The Sketching Approach to Program Synthesis use supervision or specification to guide learning or synthesis. Identify the evidence for each paper separately, with filenames and page numbers.",
+        "criteria": [
+          "Identify both requested papers correctly",
+          "Explain supervision in SPARLING",
+          "Explain holes and specifications in Sketching",
+          "Compare the mechanisms using supporting pages"
+        ]
+      },
+      "mode": "fixed",
+      "application_model_calls": 1,
+      "seconds_retrieval_planning_answer": 2.260383208980784,
+      "stop_reason": "fixed_single_pass"
+    },
+    {
+      "task": {
+        "id": "T1",
+        "question": "Compare how SPARLING and The Sketching Approach to Program Synthesis use supervision or specification to guide learning or synthesis. Identify the evidence for each paper separately, with filenames and page numbers.",
+        "criteria": [
+          "Identify both requested papers correctly",
+          "Explain supervision in SPARLING",
+          "Explain holes and specifications in Sketching",
+          "Compare the mechanisms using supporting pages"
+        ]
+      },
+      "mode": "initial_agent",
+      "application_model_calls": 5,
+      "seconds_retrieval_planning_answer": 14.18217037501745,
+      "stop_reason": "planner_answer"
+    },
+    {
+      "task": {
+        "id": "T2",
+        "question": "Compare SYNQUID and MYTH: what inputs or specifications guide each system, and how do they constrain the program synthesis process? Find supporting passages for each system and cite filenames and page numbers.",
+        "criteria": [
+          "Identify sources for both systems",
+          "Describe SYNQUID specifications accurately",
+          "Describe MYTH inputs accurately",
+          "Support the comparison with passages for both systems"
+        ]
+      },
+      "mode": "fixed",
+      "application_model_calls": 1,
+      "seconds_retrieval_planning_answer": 4.530770541983657,
+      "stop_reason": "fixed_single_pass"
+    },
+    {
+      "task": {
+        "id": "T2",
+        "question": "Compare SYNQUID and MYTH: what inputs or specifications guide each system, and how do they constrain the program synthesis process? Find supporting passages for each system and cite filenames and page numbers.",
+        "criteria": [
+          "Identify sources for both systems",
+          "Describe SYNQUID specifications accurately",
+          "Describe MYTH inputs accurately",
+          "Support the comparison with passages for both systems"
+        ]
+      },
+      "mode": "initial_agent",
+      "application_model_calls": 5,
+      "seconds_retrieval_planning_answer": 8.2152459169738,
+      "stop_reason": "action_limit"
+    },
+    {
+      "task": {
+        "id": "T3",
+        "question": "Compare The Sketching Approach to Program Synthesis with Learning to Infer Program Sketches. What does each mean by a sketch, who or what supplies it, and how is the remaining program completed? Cite the supporting filenames and page numbers for each paper.",
+        "criteria": [
+          "Distinguish the two named papers",
+          "Explain each meaning of sketch",
+          "Explain who or what supplies each sketch",
+          "Explain completion mechanisms with source evidence"
+        ]
+      },
+      "mode": "fixed",
+      "application_model_calls": 1,
+      "seconds_retrieval_planning_answer": 5.486695040948689,
+      "stop_reason": "fixed_single_pass"
+    },
+    {
+      "task": {
+        "id": "T3",
+        "question": "Compare The Sketching Approach to Program Synthesis with Learning to Infer Program Sketches. What does each mean by a sketch, who or what supplies it, and how is the remaining program completed? Cite the supporting filenames and page numbers for each paper.",
+        "criteria": [
+          "Distinguish the two named papers",
+          "Explain each meaning of sketch",
+          "Explain who or what supplies each sketch",
+          "Explain completion mechanisms with source evidence"
+        ]
+      },
+      "mode": "initial_agent",
+      "application_model_calls": 2,
+      "seconds_retrieval_planning_answer": 3.0549615409690887,
+      "stop_reason": "invalid_planner_output"
+    },
+    {
+      "task": {
+        "id": "T0",
+        "question": "According to SPARLING, what accuracy did the authors report for localizing intermediate states on synthetic domains? Cite the supporting filename and page number.",
+        "criteria": [
+          "Identify the SPARLING source correctly",
+          "Report the accuracy with its experimental scope",
+          "Provide a supporting filename and page number"
+        ]
+      },
+      "mode": "refined_agent",
+      "application_model_calls": 4,
+      "seconds_retrieval_planning_answer": 5.037819999968633,
+      "stop_reason": "planner_answer"
+    },
+    {
+      "task": {
+        "id": "T1",
+        "question": "Compare how SPARLING and The Sketching Approach to Program Synthesis use supervision or specification to guide learning or synthesis. Identify the evidence for each paper separately, with filenames and page numbers.",
+        "criteria": [
+          "Identify both requested papers correctly",
+          "Explain supervision in SPARLING",
+          "Explain holes and specifications in Sketching",
+          "Compare the mechanisms using supporting pages"
+        ]
+      },
+      "mode": "refined_agent",
+      "application_model_calls": 5,
+      "seconds_retrieval_planning_answer": 10.066155417007394,
+      "stop_reason": "planner_answer"
+    },
+    {
+      "task": {
+        "id": "T2",
+        "question": "Compare SYNQUID and MYTH: what inputs or specifications guide each system, and how do they constrain the program synthesis process? Find supporting passages for each system and cite filenames and page numbers.",
+        "criteria": [
+          "Identify sources for both systems",
+          "Describe SYNQUID specifications accurately",
+          "Describe MYTH inputs accurately",
+          "Support the comparison with passages for both systems"
+        ]
+      },
+      "mode": "refined_agent",
+      "application_model_calls": 3,
+      "seconds_retrieval_planning_answer": 5.419870083103888,
+      "stop_reason": "planner_answer"
+    },
+    {
+      "task": {
+        "id": "T3",
+        "question": "Compare The Sketching Approach to Program Synthesis with Learning to Infer Program Sketches. What does each mean by a sketch, who or what supplies it, and how is the remaining program completed? Cite the supporting filenames and page numbers for each paper.",
+        "criteria": [
+          "Distinguish the two named papers",
+          "Explain each meaning of sketch",
+          "Explain who or what supplies each sketch",
+          "Explain completion mechanisms with source evidence"
+        ]
+      },
+      "mode": "refined_agent",
+      "application_model_calls": 4,
+      "seconds_retrieval_planning_answer": 7.323439541971311,
+      "stop_reason": "planner_answer"
+    }
+  ],
+  "totals": {
+    "fixed": {
+      "calls": 4,
+      "seconds": 14.716350041911937
+    },
+    "initial_agent": {
+      "calls": 15,
+      "seconds": 29.631593540892936
+    },
+    "refined_agent": {
+      "calls": 16,
+      "seconds": 27.847285042051226
+    }
+  },
+  "input_sha256": {
+    "comparison_results(1).json": "ceebe3545c26e99f88c3626d46e261e4dcbd85ced974431a0a5398565661061a",
+    "comparison_results(3).json": "a056d3d1b579240eef41846403164ff705cf0d0661186c91bf33f65f30c15664"
+  }
+}
