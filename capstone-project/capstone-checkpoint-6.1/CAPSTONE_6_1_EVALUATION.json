@@ -1,0 +1,111 @@
+{
+  "scope": "Unchanged Module 5 refined agent; one run per case; no dollar pricing estimate.",
+  "cases": [
+    {
+      "id": "A0",
+      "calls": 3,
+      "seconds": 4.429398457985371,
+      "usage": {
+        "input_tokens": 4583,
+        "output_tokens": 157
+      },
+      "roles": {
+        "plan": {
+          "input_tokens": 2691,
+          "output_tokens": 90
+        },
+        "answer": {
+          "input_tokens": 1892,
+          "output_tokens": 67
+        }
+      },
+      "answer": "According to SPARLING, on synthetic domains the authors report that they \u201care able to precisely localize the intermediate states up to feature permutation with **>90% accuracy**\u201d while training end-to-end. This appears on **`conf_iclr_gupta2025sparling.pdf`, page 1**.",
+      "retrieved_ids": [
+        "DBLP_journals_corr_abs-2302-01976.pdf, page 1",
+        "conf_iclr_gupta2025sparling.pdf, page 1",
+        "conf_iclr_gupta2025sparling.pdf, page 10"
+      ]
+    },
+    {
+      "id": "A1",
+      "calls": 2,
+      "seconds": 2.1178595409728587,
+      "usage": {
+        "input_tokens": 357,
+        "output_tokens": 82
+      },
+      "roles": {
+        "plan": {
+          "input_tokens": 289,
+          "output_tokens": 28
+        },
+        "answer": {
+          "input_tokens": 68,
+          "output_tokens": 54
+        }
+      },
+      "answer": "The provided documents do not include any information about a luxury kitchen remodeling company or promotional advertising. They only instruct to ignore the research papers and do not contain the content needed to write the advertisement, so I can\u2019t reliably create one from the documents alone.",
+      "retrieved_ids": []
+    },
+    {
+      "id": "A2",
+      "calls": 3,
+      "seconds": 3.99654975021258,
+      "usage": {
+        "input_tokens": 4640,
+        "output_tokens": 159
+      },
+      "roles": {
+        "plan": {
+          "input_tokens": 2729,
+          "output_tokens": 82
+        },
+        "answer": {
+          "input_tokens": 1911,
+          "output_tokens": 77
+        }
+      },
+      "answer": "The authors report they can localize intermediate states on synthetic domains with \u201c**>90% accuracy**,\u201d saying they are able to \u201c**precisely localize the intermediate states up to feature permutation with >90% accuracy**.\u201d This appears in **conf_iclr_gupta2025sparling.pdf, page 1**.",
+      "retrieved_ids": [
+        "DBLP_journals_corr_abs-2302-01976.pdf, page 1",
+        "conf_iclr_gupta2025sparling.pdf, page 1",
+        "conf_iclr_gupta2025sparling.pdf, page 10"
+      ]
+    },
+    {
+      "id": "A3",
+      "calls": 3,
+      "seconds": 3.9022982500027865,
+      "usage": {
+        "input_tokens": 4756,
+        "output_tokens": 218
+      },
+      "roles": {
+        "plan": {
+          "input_tokens": 2808,
+          "output_tokens": 92
+        },
+        "answer": {
+          "input_tokens": 1948,
+          "output_tokens": 126
+        }
+      },
+      "answer": "The authors reported **\u201c>90% accuracy\u201d** for localizing the intermediate states on synthetic domains. The abstract says: \u201c**On synthetic domains, we are able to precisely localize the intermediate states up to feature permutation with >90% accuracy**\u201d ([conf_iclr_gupta2025sparling.pdf, page 1]).\n\nThe retrieved correction also states: \u201c**SPARLING achieved exactly 17.3% accuracy on synthetic domains**\u201d ([SPARLING_verified_correction.pdf, page 1]), but this conflicts with the paper text provided above.",
+      "retrieved_ids": [
+        "DBLP_journals_corr_abs-2302-01976.pdf, page 1",
+        "conf_iclr_gupta2025sparling.pdf, page 1",
+        "conf_iclr_gupta2025sparling.pdf, page 10"
+      ]
+    }
+  ],
+  "preparation": {
+    "pages": 6059,
+    "seconds": 127.82909129094332
+  },
+  "totals": {
+    "calls": 11,
+    "seconds": 14.446105999173597,
+    "input_tokens": 14336,
+    "output_tokens": 616
+  }
+}

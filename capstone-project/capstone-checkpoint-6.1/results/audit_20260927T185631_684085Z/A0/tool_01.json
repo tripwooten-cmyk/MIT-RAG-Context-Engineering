@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "SPARLING synthetic domains localizing intermediate states accuracy",
+  "reason": "Find the SPARLING paper and the reported synthetic-domain localization accuracy.",
+  "hits": [
+    {
+      "id": "DBLP_journals_corr_abs-2302-01976.pdf, page 1",
+      "score": 26.581231197544177
+    },
+    {
+      "id": "conf_iclr_gupta2025sparling.pdf, page 1",
+      "score": 26.5409695534613
+    },
+    {
+      "id": "conf_iclr_gupta2025sparling.pdf, page 10",
+      "score": 14.967372569180688
+    }
+  ]
+}
