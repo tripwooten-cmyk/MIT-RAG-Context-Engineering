@@ -1,0 +1,16 @@
+{
+  "phase": "baseline",
+  "case": "B0",
+  "seconds": 6.683316792012192,
+  "chat_calls": 4,
+  "embedding_calls": 0,
+  "input_tokens": 11720,
+  "output_tokens": 482,
+  "missing_usage_records": 0,
+  "cache_event": "disabled",
+  "answer_status": "unstructured",
+  "validation_rejections": 0,
+  "stage_seconds": null,
+  "answer": "Here is a comparison of how the two papers use supervision or specification:\n\n## SPARLING\nSPARLING is trained **end-to-end without direct supervision of the intermediate concepts**. The abstract says it aims to identify motifs “**exclusively by reducing end-to-end error**” and notes that “**we do not assume identifiability of parameters, but rather of a latent intermediate representation output by a local model**.” It also says that on synthetic domains they localize intermediate states “**even though we only train end-to-end**.”  \n**Evidence:** `[DBLP_journals_corr_abs-2302-01976.pdf, page 1]`\n\n## The Sketching Approach to Program Synthesis\nThis paper uses **explicit programmer-provided specification** to guide synthesis. The abstract says that in sketching, “**the programmer uses partial programs to describe the desired implementation strategy, and leaves the low-level details of the implementation to an automated synthesis procedure**.” It further states that programmers provide “**either a reference implementation or a set of test routines that the synthesized code must pass**.” The introduction similarly says the sketch “**encodes the structure of a solution while leaving its low-level details unspecified**.”  \n**Evidence:** `[DBLP_conf_aplas_Solar-Lezama09.pdf, page 1]`\n\n## Comparison\n- **SPARLING:** learns intermediate representations from **end-to-end supervision only**, without explicit labels for the motifs.\n- **Sketching Approach:** relies on **human-written partial programs plus reference implementations or tests** as specification for synthesis.\n\nIf you want, I can also turn this into a side-by-side table.",
+  "review_status": "manual_review_pending"
+}

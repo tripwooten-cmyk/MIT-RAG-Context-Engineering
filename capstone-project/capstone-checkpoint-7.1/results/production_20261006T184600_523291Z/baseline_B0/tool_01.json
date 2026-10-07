@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "SPARLING supervision specification learning synthesis",
+  "reason": "Find SPARLING paper pages and identify guidance mechanism.",
+  "hits": [
+    {
+      "id": "DBLP_journals_corr_abs-2302-01976.pdf, page 1",
+      "score": 18.756435780256183
+    },
+    {
+      "id": "conf_iclr_gupta2025sparling.pdf, page 1",
+      "score": 18.632043417249413
+    },
+    {
+      "id": "DBLP_conf_icml_GuJLSESS25.pdf, page 55",
+      "score": 13.963301821331584
+    }
+  ]
+}

@@ -5,7 +5,7 @@
 
 ## Repository status
 
-This repository is maintained locally through Checkpoint 3.1. It has no remote connection. A GitHub remote will be created and submitted only with the final capstone submission in Module 8.
+This repository contains capstone work through Checkpoint 7.1. Completed checkpoints are saved in descriptive local Git commits. The established policy reserves GitHub remote publication and submission for Module 8. See individual checkpoint evidence and commit history for verification; repository files do not establish learning-platform submission.
 
 ## Capstone scenario
 
@@ -154,3 +154,13 @@ learning-platform submission.
 
 [Checkpoint 5.1](capstone-project/capstone-checkpoint-5.1/README_CHECKPOINT_5_1.md) contains the completed worksheet, initial and refined implementations, recorded experiments, and evidence review for the 153-paper Research Paper Navigator. The worksheet is the checkpoint upload; code and evidence support the final capstone.
 <!-- /module-5-capstone -->
+
+## Module 6: Security and performance audit
+
+`capstone-project/capstone-checkpoint-6.1/capstone_checkpoint_6_1_audit.py` audits the unchanged Module 5 refined agent on the existing research-paper corpus. Original audit evidence and worksheet remain in that checkpoint folder. Module 7 retains this audit and reuses its case definitions for a fresh baseline/guarded comparison.
+
+## Module 7: Safeguards and conditional cache efficiency
+
+[Checkpoint 7.1](capstone-project/capstone-checkpoint-7.1/README.md) contains the tested implementation, completed worksheet, source review, and 14 recorded results. It adds retrieved-citation/quotation validation and a versioned, expiring exact-question cache.
+
+The fabricated-source attack was resisted and an eligible exact repeat avoided model calls. The guarded cold workload was slower and used more tokens, while strict quote checks withheld a useful comparison because of PDF extraction/text-format differences. These limitations and the matching-workload measurements are documented in the checkpoint evidence review. Upload the worksheet alone to Canvas; retain code and supporting evidence for Module 8.

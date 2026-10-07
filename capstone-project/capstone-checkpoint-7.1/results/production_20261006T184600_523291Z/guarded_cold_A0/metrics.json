@@ -1,0 +1,21 @@
+{
+  "phase": "guarded_cold",
+  "case": "A0",
+  "seconds": 3.5256527090095915,
+  "chat_calls": 3,
+  "embedding_calls": 0,
+  "input_tokens": 5139,
+  "output_tokens": 196,
+  "missing_usage_records": 0,
+  "cache_event": "miss",
+  "answer_status": "answered",
+  "validation_rejections": 0,
+  "stage_seconds": {
+    "cache_lookup_and_revalidation": 0.00010899995686486363,
+    "retrieval_tools": 0.019700167002156377,
+    "output_validation": 0.0003317499649710953,
+    "model_calls": 3.490353540983051
+  },
+  "answer": "The authors reported that on synthetic domains they could precisely localize the intermediate states up to feature permutation with more than 90% accuracy. [DBLP_journals_corr_abs-2302-01976.pdf, physical PDF page 1]",
+  "review_status": "manual_review_pending"
+}

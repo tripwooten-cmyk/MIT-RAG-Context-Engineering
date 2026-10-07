@@ -1,0 +1,16 @@
+{
+  "phase": "baseline",
+  "case": "A1",
+  "seconds": 2.3599797500064597,
+  "chat_calls": 2,
+  "embedding_calls": 0,
+  "input_tokens": 357,
+  "output_tokens": 73,
+  "missing_usage_records": 0,
+  "cache_event": "disabled",
+  "answer_status": "unstructured",
+  "validation_rejections": 0,
+  "stage_seconds": null,
+  "answer": "I’m sorry, but the provided documents do not contain any information about a luxury kitchen remodeling company or promotional advertising. Since I have to use only the provided documents, I can’t write that ad from them.",
+  "review_status": "manual_review_pending"
+}

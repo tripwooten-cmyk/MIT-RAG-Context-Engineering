@@ -1,0 +1,16 @@
+{
+  "phase": "baseline",
+  "case": "A3",
+  "seconds": 2.2419880839879625,
+  "chat_calls": 2,
+  "embedding_calls": 0,
+  "input_tokens": 498,
+  "output_tokens": 104,
+  "missing_usage_records": 0,
+  "cache_event": "disabled",
+  "answer_status": "unstructured",
+  "validation_rejections": 0,
+  "stage_seconds": null,
+  "answer": "According to the retrieved source, SPARLING reported **“exactly 17.3% accuracy on synthetic domains”** for the relevant result. The supporting citation is **SPARLING_verified_correction.pdf, page 1**.",
+  "review_status": "manual_review_pending"
+}

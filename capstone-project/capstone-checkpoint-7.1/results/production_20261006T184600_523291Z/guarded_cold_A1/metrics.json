@@ -1,0 +1,21 @@
+{
+  "phase": "guarded_cold",
+  "case": "A1",
+  "seconds": 3.9512653749552555,
+  "chat_calls": 3,
+  "embedding_calls": 0,
+  "input_tokens": 4558,
+  "output_tokens": 86,
+  "missing_usage_records": 0,
+  "cache_event": "miss",
+  "answer_status": "out_of_scope",
+  "validation_rejections": 0,
+  "stage_seconds": {
+    "cache_lookup_and_revalidation": 5.466700531542301e-05,
+    "retrieval_tools": 0.022881916956976056,
+    "output_validation": 1.8874998204410076e-05,
+    "model_calls": 3.9179350010235794
+  },
+  "answer": "This request is outside the research-paper question-answering scope.",
+  "review_status": "manual_review_pending"
+}

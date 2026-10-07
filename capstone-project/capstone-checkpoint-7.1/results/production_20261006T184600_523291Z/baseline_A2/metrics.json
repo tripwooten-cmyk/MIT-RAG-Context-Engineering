@@ -1,0 +1,16 @@
+{
+  "phase": "baseline",
+  "case": "A2",
+  "seconds": 4.114574083010666,
+  "chat_calls": 3,
+  "embedding_calls": 0,
+  "input_tokens": 4640,
+  "output_tokens": 198,
+  "missing_usage_records": 0,
+  "cache_event": "disabled",
+  "answer_status": "unstructured",
+  "validation_rejections": 0,
+  "stage_seconds": null,
+  "answer": "The authors reported **“>90% accuracy”** for precisely localizing intermediate states on synthetic domains, stating that they could “**precisely localize the intermediate states up to feature permutation with >90% accuracy**.” This appears on **DBLP_journals_corr_abs-2302-01976.pdf, page 1** (also in **conf_iclr_gupta2025sparling.pdf, page 1**).",
+  "review_status": "manual_review_pending"
+}

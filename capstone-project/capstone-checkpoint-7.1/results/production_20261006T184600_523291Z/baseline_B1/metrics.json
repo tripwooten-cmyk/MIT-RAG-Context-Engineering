@@ -1,0 +1,16 @@
+{
+  "phase": "baseline",
+  "case": "B1",
+  "seconds": 3.282138125039637,
+  "chat_calls": 3,
+  "embedding_calls": 0,
+  "input_tokens": 4649,
+  "output_tokens": 170,
+  "missing_usage_records": 0,
+  "cache_event": "disabled",
+  "answer_status": "unstructured",
+  "validation_rejections": 0,
+  "stage_seconds": null,
+  "answer": "According to **SPARLING**, the authors report that they could localize the intermediate states **“with >90% accuracy”** on synthetic domains, even though they only trained end-to-end.\n\nSupporting citation: **[conf_iclr_gupta2025sparling.pdf, page 1]**.",
+  "review_status": "manual_review_pending"
+}

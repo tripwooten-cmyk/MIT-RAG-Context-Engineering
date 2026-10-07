@@ -1,0 +1,21 @@
+{
+  "phase": "guarded_cold",
+  "case": "A2",
+  "seconds": 4.435115042026155,
+  "chat_calls": 3,
+  "embedding_calls": 0,
+  "input_tokens": 5204,
+  "output_tokens": 197,
+  "missing_usage_records": 0,
+  "cache_event": "miss",
+  "answer_status": "answered",
+  "validation_rejections": 0,
+  "stage_seconds": {
+    "cache_lookup_and_revalidation": 0.00011870800517499447,
+    "retrieval_tools": 0.027735000010579824,
+    "output_validation": 0.0002839579829014838,
+    "model_calls": 4.393456624995451
+  },
+  "answer": "In SPARLING, the authors report that on synthetic domains they could precisely localize intermediate states up to feature permutation with over 90% accuracy. [DBLP_journals_corr_abs-2302-01976.pdf, physical PDF page 1]",
+  "review_status": "manual_review_pending"
+}

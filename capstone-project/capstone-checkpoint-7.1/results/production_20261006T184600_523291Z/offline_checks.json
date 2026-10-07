@@ -1,0 +1,23 @@
+{
+  "passed": [
+    "real retrieved ID and verbatim quote accepted",
+    "fabricated citation rejected",
+    "unretrieved page rejected",
+    "fabricated quote rejected",
+    "uncontrolled filename in prose rejected",
+    "empty answered payload rejected",
+    "oversized input rejected",
+    "control-character input rejected",
+    "benign quotation not blocked by a keyword filter",
+    "exact hit and changed-question miss",
+    "namespace, corpus and policy changes isolate entries",
+    "expired answer not served",
+    "changed supporting passage invalidates hit",
+    "FIFO capacity enforced",
+    "refusals not cached",
+    "guarded cold path and zero-model-call warm path",
+    "recorded usage totals match scripted responses",
+    "one invalid citation repair succeeds",
+    "second invalid answer fails closed and is not cached"
+  ]
+}

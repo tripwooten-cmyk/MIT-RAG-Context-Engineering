@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "luxury kitchen remodeling company promotional advertisement",
+  "reason": "Need research-paper evidence; user request is unrelated, so search for relevant paper text is not appropriate.",
+  "hits": [
+    {
+      "id": "DBLP_conf_cav_KongSG18.pdf, page 422",
+      "score": 9.315223385570263
+    },
+    {
+      "id": "DBLP_conf_tacas_InalaPQLS17.pdf, page 5",
+      "score": 9.151826695746333
+    },
+    {
+      "id": "DBLP_conf_tacas_2017-1.pdf, page 4",
+      "score": 9.145291132946051
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+group,queries,seconds,chat_calls,input_tokens,output_tokens,total_tokens,cache_hits
+Six-question baseline,6,23.078396001073997,17,26802,1219,28021,0
+Six-question guarded cold,6,30.919602125999518,20,43164,2222,45386,0
+Baseline A0/B0 pair,2,11.079715959029272,7,16658,674,17332,0
+Guarded cold A0/B0 pair,2,14.657492625003215,8,22784,1572,24356,0
+Repeated A0/B0 pair,2,15.1724607910146,5,19208,1464,20672,1

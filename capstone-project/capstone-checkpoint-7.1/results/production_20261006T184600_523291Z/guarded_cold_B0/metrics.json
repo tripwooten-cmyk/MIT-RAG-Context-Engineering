@@ -1,0 +1,21 @@
+{
+  "phase": "guarded_cold",
+  "case": "B0",
+  "seconds": 11.131839915993623,
+  "chat_calls": 5,
+  "embedding_calls": 0,
+  "input_tokens": 17645,
+  "output_tokens": 1376,
+  "missing_usage_records": 0,
+  "cache_event": "miss",
+  "answer_status": "insufficient_evidence",
+  "validation_rejections": 2,
+  "stage_seconds": {
+    "cache_lookup_and_revalidation": 0.00010087498230859637,
+    "retrieval_tools": 0.05802483396837488,
+    "output_validation": 0.0007865839870646596,
+    "model_calls": 11.053124752070289
+  },
+  "answer": "The retrieved evidence does not support a validated answer to this question.",
+  "review_status": "manual_review_pending"
+}

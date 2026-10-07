@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "\"The Sketching Approach to Program Synthesis\" supervision specification guide learning synthesis",
+  "reason": "Need separate evidence for the sketching paper.",
+  "hits": [
+    {
+      "id": "DBLP_conf_cav_BraggFRS21.pdf, page 876",
+      "score": 26.15754411073386
+    },
+    {
+      "id": "DBLP_conf_aplas_Solar-Lezama09.pdf, page 1",
+      "score": 25.495735884709045
+    },
+    {
+      "id": "DBLP_journals_corr_abs-2206-06164.pdf, page 23",
+      "score": 25.48486036590106
+    }
+  ]
+}

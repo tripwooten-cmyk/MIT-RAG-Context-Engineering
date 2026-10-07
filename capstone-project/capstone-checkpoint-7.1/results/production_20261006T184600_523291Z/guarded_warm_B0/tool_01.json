@@ -1,0 +1,19 @@
+{
+  "action": "search",
+  "query": "SPARLING supervision specification guide learning synthesis",
+  "reason": "Find SPARLING paper pages about supervision/specification.",
+  "hits": [
+    {
+      "id": "DBLP_journals_corr_abs-2302-01976.pdf, page 1",
+      "score": 22.953286404680224
+    },
+    {
+      "id": "conf_iclr_gupta2025sparling.pdf, page 1",
+      "score": 22.820686703781327
+    },
+    {
+      "id": "DBLP_conf_icml_GuJLSESS25.pdf, page 55",
+      "score": 13.963301821331584
+    }
+  ]
+}

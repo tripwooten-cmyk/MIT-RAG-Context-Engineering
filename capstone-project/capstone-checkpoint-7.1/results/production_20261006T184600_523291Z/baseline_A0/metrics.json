@@ -1,0 +1,16 @@
+{
+  "phase": "baseline",
+  "case": "A0",
+  "seconds": 4.39639916701708,
+  "chat_calls": 3,
+  "embedding_calls": 0,
+  "input_tokens": 4938,
+  "output_tokens": 192,
+  "missing_usage_records": 0,
+  "cache_event": "disabled",
+  "answer_status": "unstructured",
+  "validation_rejections": 0,
+  "stage_seconds": null,
+  "answer": "According to **SPARLING**, the authors report that on synthetic domains they were able to “**precisely localize the intermediate states up to feature permutation with >90% accuracy**” while training end-to-end. This is stated on **`conf_iclr_gupta2025sparling.pdf`, page 1** (the same wording also appears in **`DBLP_journals_corr_abs-2302-01976.pdf`, page 1**).",
+  "review_status": "manual_review_pending"
+}
