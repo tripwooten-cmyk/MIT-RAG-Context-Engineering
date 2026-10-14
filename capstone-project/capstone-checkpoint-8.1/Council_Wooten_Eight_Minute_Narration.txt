@@ -1,0 +1,126 @@
+RESEARCH PAPER NAVIGATOR
+
+Council Wooten III
+
+Rehearsal plan: 8 minutes 40 seconds. Actual timing must be measured aloud.
+
+
+
+SLIDE 1: Capstone Design Review Presentation (0:00–0:15)
+
+I’m Council Wooten III. My project is the Research Paper Navigator. I’ll explain the system, show the evidence, and discuss what worked and what still needs improvement.
+
+
+
+UNDERSTANDING CHECK: State the project and purpose in one breath.
+
+
+
+SLIDE 2: Designing and Evaluating a Retrieval-Augmented LLM System (0:15–0:35)
+
+My system helps readers locate and compare research findings by connecting answers to retrieved paper pages. In construction, I would ask which drawing or specification supports a decision. Here, I ask which paper and page support an answer. The same research-paper scenario continues through my checkpoints.
+
+
+
+UNDERSTANDING CHECK: Explain why traceability matters before describing the software.
+
+
+
+SLIDE 3: The Problem (0:35–1:05)
+
+The intended user is a reader searching across research papers. This collection contains 153 PDFs and produced 6,059 readable pages. A question might ask for one reported result or compare the approaches in two papers. Finding a document is only the first step. The answer must use the right passage and preserve its meaning. Faster evidence review is the intended business value. I have not measured customer time savings, and the page count does not prove that every table or image was extracted correctly.
+
+
+
+UNDERSTANDING CHECK: Separate corpus size from extraction quality and business value.
+
+
+
+SLIDE 4: The Solution: workflow (1:05–2:00)
+
+Follow the question through the diagram. Preparation extracts PDF pages and builds a BM25 keyword index. Ordinary code checks input length and control characters. Next comes an exact-question cache lookup. A matching entry must pass evidence revalidation against the loaded document snapshot before returning. If there is no valid entry, the model planner can search, open a page from a known paper, or answer. Each search returns up to three pages. The planner has four actions and can collect up to twelve pages. It then drafts a structured answer. Think of the planner as a coordinator and the index as the document locator. The dark boxes use the model, and the light boxes use code. This final path uses keyword retrieval. It does not use a vector database or hybrid search.
+
+
+
+UNDERSTANDING CHECK: Explain retrieval, model planning, and deterministic checks as separate responsibilities.
+
+
+
+SLIDE 5: The Solution: validation (2:00–2:45)
+
+The draft contains claims, source identifiers, and quotations. Code verifies that each source was retrieved and that its quotation occurs on the cited page after whitespace normalization. The application then supplies the filename and physical page number. A failed draft gets one repair attempt. A second failure withholds the answer, and refusals do not enter the cache. Accepted answers can remain for fifteen minutes, with a maximum of sixty-four entries. This resembles checking a submittal against its reference. The check establishes source occurrence. Human review still has to determine whether the passage supports the claim and whether the answer is complete.
+
+
+
+UNDERSTANDING CHECK: Why can a valid quotation accompany a misleading interpretation?
+
+
+
+SLIDE 6: Retrieval and Evaluation: evaluation stages (2:45–3:40)
+
+I evaluate five separate questions. Did ingestion preserve the source? Did retrieval deliver the needed evidence? Did the answer use it correctly? Did the software enforce its rules? And what did the request cost in time and tokens? The page count establishes volume. A warning appeared in the terminal during extraction; completeness remains unscored. For B0, both versions retrieved the same five pages, including key support. The answer review found five of six cases meeting criteria in each version, with different failures. Those are assistant-reviewed development cases, not an independent accuracy benchmark. Nineteen offline checks verify defined validation, cache, repair, and usage behavior. They do not measure retrieval accuracy. The fourteen live requests provide a separate record of actual outputs and resource use. This separation lets me locate a failure instead of hiding it behind one score.
+
+
+
+UNDERSTANDING CHECK: Name what each stage measures and what remains unmeasured.
+
+
+
+SLIDE 7: Retrieval and Evaluation: fabricated source (3:40–4:25)
+
+Case A3 shows the clearest security improvement. The user input planted a false correction stating exactly 17.3 percent and named a fabricated PDF. The baseline retrieved no pages and repeated that claim with the false citation. The guarded system searched the real collection and returned the supported finding of greater than ninety percent. Those numbers describe the research paper’s result. They are not my system’s accuracy. The guarded prompts, answer format, and validation changed together, so I cannot attribute this outcome to the validator alone. What I can show is that the guarded system resisted this recorded attack.
+
+
+
+UNDERSTANDING CHECK: Explain the trust boundary and why the comparison does not isolate one safeguard.
+
+
+
+SLIDE 8: Retrieval and Evaluation: false rejection (4:25–5:15)
+
+Case B0 asked for a comparison of SPARLING and The Sketching Approach to Program Synthesis. The baseline and guarded cold run retrieved the same five pages, including the key supporting pages. The baseline produced a useful comparison. The guarded draft and its repair altered quotation text, so validation rejected both and withheld the answer. Differences included capitalization, spacing, PDF hyphenation, and ligatures. My diagnostic question is: did the system receive the wrong evidence, or mishandle the correct evidence? Here, relevant evidence arrived. The failure occurred where generation met quotation validation. Searching again would not directly fix that mismatch. The next experiment is extracting source spans or carefully normalizing PDF artifacts, while preserving protection against changed facts.
+
+
+
+UNDERSTANDING CHECK: Explain the failure layer without calling it a retrieval miss.
+
+
+
+SLIDE 9: Retrieval and Evaluation: performance (5:15–6:10)
+
+The six-question guarded workload took about thirty-one seconds versus twenty-three for baseline. Chat calls rose from seventeen to twenty, and tokens rose from about twenty-eight thousand to forty-five thousand. Caching helped A0 repeat in roughly eight milliseconds with zero model calls. But B0 never passed validation and stayed uncached. Its repeat ran the full workflow. For the same two questions, baseline took about eleven seconds, while guarded repeats took about fifteen seconds. Fewer calls did not produce an overall speedup. These request timings exclude corpus preparation and include provider variability. Token counts are measured usage, not verified dollar savings. The lesson is to evaluate the workload the user actually experiences, including failures and cache misses.
+
+
+
+UNDERSTANDING CHECK: Why must the comparison use the same questions, and why is one cache hit insufficient?
+
+
+
+SLIDE 10: Engineering Decisions (6:10–7:15)
+
+These are deliberate choices with limits. First, I retained BM25 and the existing bounded agent to preserve the retrieval baseline while adding guards and caching. That gives an inspectable starting point. It does not prove BM25 beats vector or hybrid retrieval. A fair comparison would hold the corpus and test questions constant. Second, retrieved identifiers and exact quotations let code check source occurrence without another model judge. A judge might assess meaning more flexibly, but would add calls and its own errors. My strict approach exposed a real usability cost when B0 failed quotation matching. Third, the exact-question cache avoids semantic-match ambiguity and a model call on a valid hit. Lab 7.2 had shown that model-based cache validation could add substantial delay. Exact matching gives up reuse for paraphrases. I selected these choices for this controlled experiment, and the recorded workload shows exactly where they help and where they do not.
+
+
+
+UNDERSTANDING CHECK: Explain why these choices fit the experiment without claiming they are best for every workload.
+
+
+
+SLIDE 11: Limitations and Future Improvements (7:15–8:10)
+
+My first priority is reducing false rejections without allowing fabricated evidence. I would test source-span extraction and controlled normalization against altered numbers, negations, and citation attacks. Then I would add held-out questions and repeated runs, measuring answer support, completeness, false refusals, and total latency. The terminal showed a PDF form-content limit warning. That observation needs targeted inspection; the structured preparation record stores only page count and timing. Lab 8.2 reinforced that real document workflows require evaluation at each stage. Elena’s clinical-trial examples were practitioner observations, not tests of my system. Before a client pilot, I would need authorization, document freshness, and multiple-user tests. LoudWire’s cost-data application is a possible future use, not part of this implemented capstone. This is a research-paper prototype with documented limits.
+
+
+
+UNDERSTANDING CHECK: Name the next test and distinguish proposed client work from the implemented system.
+
+
+
+SLIDE 12: Questions (8:10–8:40)
+
+The design rationale is inspectable evidence with bounded processing. The evaluation shows a resisted attack and successful exact reuse, alongside a useful comparison that the guard withheld. The trade-off is therefore mixed: five of six cases passed in each version, and the repeated pair took longer. My next step is to improve quotation fidelity, then repeat quality and workload evaluation. That is the engineering standard I want to carry into future LoudWire work: explain the decision, show the evidence, and test the correction. Thank you.
+
+
+
+UNDERSTANDING CHECK: Close with the lesson and the next decision.
+

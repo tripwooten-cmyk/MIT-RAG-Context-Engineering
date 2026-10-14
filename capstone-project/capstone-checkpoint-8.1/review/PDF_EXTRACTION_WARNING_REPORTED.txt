@@ -1,0 +1,11 @@
+REPORTED TERMINAL EXCERPT — NOT AN ORIGINAL SAVED CONSOLE LOG
+Source: Council's pasted terminal output for production_20261006T184600_523291Z, supplied in this conversation. This excerpt is copied for provenance; no new extraction was performed.
+
+processed 25/153 papers
+Exceeded 5000 form XObject invocations while extracting text; further form content is skipped.
+processed 50/153 papers
+
+The complete pasted output later reported:
+Built corpus with 6059 readable pages (0 unreadable papers skipped).
+
+preparation.json stores pages=6059 and seconds=124.30889366695192. It does not store the warning. Readable-page counts do not establish extraction completeness. The original source PDFs were not included in the review export.

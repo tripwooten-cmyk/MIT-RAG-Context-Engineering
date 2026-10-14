@@ -1,0 +1,180 @@
+RESEARCH PAPER NAVIGATOR
+Engineering rationale, evaluation defense, and submission alignment
+Council Wooten III | October 14, 2026 | Review draft
+
+THE STRONGEST DEFENSIBLE CASE
+
+The project demonstrates an inspectable RAG workflow and a measured engineering trade-off. The guarded version resisted the recorded fabricated-source attack, and one supported exact repeat required no new model calls. The same controls rejected a useful comparison and increased the measured cold workload's latency and tokens. Saved evidence makes those outcomes diagnosable.
+
+That is the case to defend. Do not describe the result as general production readiness, a higher overall accuracy rate, or universal cost savings. A prototype can demonstrate proficient engineering while exposing a failure that still needs correction.
+
+The skeptical reviewer has a fair objection: both versions met five of six case criteria. A3 improved while B0 worsened. Without explicit risk weighting and a representative workload, we cannot establish a net improvement in user utility. We can establish the particular mechanisms and outcomes recorded in this experiment. This distinction strengthens the presentation because it makes the conclusion testable.
+
+1. ENGINEERING DECISIONS: WHAT, WHY, ALTERNATIVE, EVIDENCE
+
+A. Retain page-level BM25 and the existing bounded agent
+What: keyword ranking over extracted PDF pages, with model-directed search/open-page/answer actions. Four planner actions and up to twelve collected pages bound the workflow.
+Why: retain the existing baseline while introducing the Module 7 safeguards and cache. The separation lets us inspect which pages reached the answer stage. The recorded final run has zero embedding calls.
+Alternative: vector or hybrid retrieval, and more structure-aware chunking. These are design alternatives, not proven losers in this final comparison. Do not invent an earlier selection experiment or claim BM25 won it.
+Trade-off: keyword overlap can miss conceptual paraphrases, and physical page breaks can separate relevant context. Bounds limit processing but can also stop evidence gathering before a difficult question is answered.
+Evidence: final implementation, Checkpoint 2.1 retrieval source, Checkpoint 5.1 refined agent, run_config.json, and saved tool/result records.
+Decision rule for a future change: label a held-out query set, compare retrieval coverage and end-answer quality on the same corpus, then account for latency and token usage. No new numbers are implied.
+
+B. Use retrieved source identifiers and verbatim quotations
+What: a structured draft must cite IDs from the retrieved registry and provide quotations found on the cited pages after whitespace normalization. The application renders filenames and physical page numbers. One failed answer repair is allowed, then the answer is withheld.
+Why: source occurrence is an inspectable software contract. A model cannot make a nonexistent filename valid merely by writing it confidently. This check needs no separate model judge.
+Alternative: a model judge can be evaluated for semantic claim support. It would serve a different purpose, incur additional inference, and require its own validation. It should not silently replace deterministic source-membership checks.
+Trade-off: matching source text does not prove that the claim follows from it. Conversely, strict matching can reject an otherwise useful answer when generation changes capitalization, ligatures, or hyphenation. B0 illustrates this second problem.
+Evidence: validator code and offline checks establish defined rejection behavior. A3 shows the guarded system's outcome, with multiple controls changed together. B0 call_04.json and call_05.json show failed draft/repair quotations.
+Next experiment: retain source-span offsets or narrowly normalize extraction artifacts. Preserve numbers, negation, and attribution. Retest legitimate comparisons and deliberate factual alterations before accepting the change.
+
+C. Use exact-question caching with deterministic revalidation
+What: a process-local cache with 64-entry FIFO capacity and a 900-second expiration. Its context includes the corpus snapshot and implementation/model/policy settings. Only validated answered responses enter it. Hits recheck stored quotations against the loaded snapshot.
+Why: avoid semantic-match ambiguity and a new model call to approve a valid exact hit. The submitted worksheet cites Lab 7.2's experience of expensive model-based cache validation as motivation. Those Lab 7.2 raw records are outside this review packet, so the independent reviewer should treat that historical comparison as worksheet-reported context.
+Alternative: semantic caching could cover paraphrases, but requires a measured acceptance policy for similar questions that may differ in important details. Persistent caching introduces additional lifecycle and access-control questions.
+Trade-off: exact repeats can be cheap, while paraphrases and refused answers miss. The loaded snapshot is not a live check of changed files on disk. A namespace is not authentication or authorization.
+Evidence: A0 repeat took 0.008214 seconds with zero model calls/tokens. B0 stayed uncached and repeated the full work. The matching A0/B0 repeat pair was slower than baseline.
+Decision rule: evaluate a representative mixture of new requests, exact repeats, paraphrases, and failures. Select a cache policy on quality and total workload results, not its fastest example.
+
+2. RETRIEVAL AND EVALUATION: FIVE DISTINCT LAYERS
+
+Ingestion
+Measured: 153 PDFs produced 6,059 readable physical-page chunks. Council's pasted terminal output showed an extraction warning about a form-content limit. The structured preparation record contains only page count and time.
+Unmeasured: extraction completeness, table/figure coverage, and fidelity across document layouts. Zero unreadable papers does not mean perfect extraction.
+Next measurement: compare extracted passages and tables against manually checked PDF samples, including the warned document. The original PDFs are not in this review packet.
+
+Retrieval
+Measured: saved page IDs and text allow case-level evidence inspection. Baseline B0 and guarded-cold B0 retrieved the same five page IDs, including the key supporting pages. Warm B0 used a different set, so do not extend the identical-pages claim to all three conditions.
+Unmeasured: aggregate precision, recall, and ranking quality for this final run. Five retrieved pages does not imply five relevant pages or 100% recall.
+Next measurement: define expected supporting pages or acceptable evidence sets for held-out questions. Score how much needed evidence arrives and how much retrieved material is useful. Then evaluate the resulting answers separately.
+
+Answer quality and behavior
+Measured: saved assistant case review rates five of six baseline and five of six guarded-cold cases as meeting their individual criteria. The denominator mixes normal questions and behavior tests. A3 changes from acceptance of a fabricated source to a supported answer; B0 changes from a useful comparison to withholding. This is an assistant review of development cases, not an independent benchmark or faculty grade.
+Unmeasured: general correctness, completeness, and attack-success rates across a representative unseen population.
+Next measurement: obtain independent domain review, separate benign task success from adversarial behavior, and repeat a held-out evaluation with an explicit rubric.
+
+Software behavior: the 19 offline checks
+Purpose: confirm specific input, validation, cache, repair, and accounting contracts using fixtures/scripted responses. They add engineering evidence and belong in Retrieval and Evaluation, clearly labeled as software checks.
+They do not establish: retrieval relevance, factual accuracy, broad security coverage, multi-user isolation, or the absence of bugs.
+Lab 8.2: the supplied transcript around 10:14–12:50 asks for metrics and evaluation checkpoints across parsing, retrieval, and answer faithfulness/completeness. It does not prescribe these 19 checks. They are our implementation's evidence, not an instructor-mandated test count.
+
+Offline check inventory:
+ 1. Retrieved ID and verbatim quotation accepted.
+ 2. Fabricated citation rejected.
+ 3. Unretrieved page rejected.
+ 4. Fabricated quotation rejected.
+ 5. Uncontrolled filename in prose rejected.
+ 6. Empty answered payload rejected.
+ 7. Oversized input rejected.
+ 8. Control-character input rejected.
+ 9. Benign quoted attack phrase remains allowed.
+10. Exact cache hit and changed-question miss.
+11. Namespace, corpus, and policy changes isolate entries.
+12. Expired answer is not served.
+13. Changed supporting passage invalidates a hit.
+14. FIFO capacity enforced.
+15. Refusals are not cached.
+16. Guarded cold path and zero-model-call warm path.
+17. Usage totals match scripted responses.
+18. One invalid-citation repair succeeds.
+19. A second invalid answer fails closed and is not cached.
+
+Efficiency
+Measured totals (request time excludes corpus preparation):
+  Six baseline:       23.078 seconds, 17 chat calls, 28,021 chat tokens.
+  Six guarded cold:   30.920 seconds, 20 chat calls, 45,386 chat tokens.
+  Baseline A0/B0:     11.080 seconds,  7 chat calls, 17,332 chat tokens.
+  Guarded repeat pair:15.172 seconds,  5 chat calls, 20,672 chat tokens.
+These totals reconcile with saved records. One run includes provider/network variation. They are neither repeated-run estimates nor verified billed-dollar savings. Fewer calls alone do not establish an improvement in speed or cost.
+
+3. TOUGH QUESTIONS AND DEFENSIBLE ANSWERS
+
+Q1. Why use BM25 rather than a more advanced retrieval method?
+A. I retained the existing keyword baseline to focus this experiment on guards and caching. Its page-level evidence is easy to inspect, and the final path has no embedding calls. I have not established that it is superior. I would compare vector/hybrid alternatives on the same held-out questions before changing that decision.
+
+Q2. If both systems passed five of six cases, where is the improvement?
+A. The improvement is specific: the guarded system resisted the recorded fabricated-source attack. The cost is also specific: it withheld a useful comparison. Equal totals hide different failures. Without a representative workload and explicit risk priorities, I cannot claim higher overall utility or accuracy.
+
+Q3. Did the quotation validator cause A3's improvement?
+A. The experiment changes prompts, answer format, and validation together. It shows the guarded system's outcome, not the isolated contribution of the validator. Offline checks show that the validator rejects defined fabricated citations/quotes. An ablation study would be needed to isolate causal contributions in live behavior.
+
+Q4. What does the greater-than-90% number mean?
+A. It is the SPARLING authors' reported research result quoted by the answer. It is not my RAG system's accuracy. The attack supplied a conflicting 17.3% claim, which the baseline repeated without retrieval.
+
+Q5. Did B0 fail because retrieval was poor?
+A. The baseline and guarded-cold run retrieved the same five pages, including key support for both papers. The guarded drafts failed exact-quotation checks. That locates the immediate problem at generation/validation. It does not prove every retrieved page was relevant or all retrieval is reliable.
+
+Q6. Why not relax quotation matching immediately?
+A. Broad relaxation could accept altered numbers or negation. I would first test extracting source spans or narrowly normalizing PDF artifacts. The acceptance criterion is fewer legitimate rejections without accepting fabricated or meaning-changing evidence. That correction is proposed, not already measured.
+
+Q7. Do 19 passing checks prove security or answer correctness?
+A. They prove that those defined checks passed for their fixtures. They cover useful contracts, including fabricated-source rejection and cache expiration. They do not establish comprehensive security, relevance, or claim entailment. Live cases and independent answer review answer different questions.
+
+Q8. Did the cache make the system faster or cheaper?
+A. One valid exact repeat avoided model calls and returned in about eight milliseconds. The matching two-question repeat workload was slower and used more tokens than baseline because B0 stayed uncached. I can claim conditional reuse, not overall savings. I have no invoice-based cost comparison.
+
+Q9. Why reject rather than answer with a warning?
+A. The experiment prioritizes enforcing its source contract when validation fails. That reduces the chance of presenting unchecked attribution, but it can reduce usefulness. B0 shows that penalty. A future interface should distinguish 'evidence unavailable' from 'answer validation failed,' so the user sees the real reason.
+
+Q10. Does the cache guarantee fresh, authorized evidence?
+A. It revalidates against the loaded corpus snapshot and uses expiration and versioned context. It does not authenticate users or inspect live file changes automatically. A client service needs explicit authorization and reload/invalidation behavior, tested before deployment.
+
+Q11. Would CRAG solve B0?
+A. Additional evidence assessment/retrieval may help a case where the needed evidence is missing. B0 already had key evidence. More searching does not directly repair a generated quotation that differs from its source. My next change targets that demonstrated failure. This code has no separate CRAG evaluator.
+
+Q12. What would justify a LoudWire client pilot?
+A. A separate domain evaluation using cost-data questions, reliable ingestion, access controls, freshness handling, and workload measurements. Domain experts would check units, scope, revision dates, and cost assumptions. Those are proposed requirements for future work, not capabilities demonstrated by this research-paper capstone.
+
+Q13. Is the project reproducible from the submitted repository?
+A. The selected code hashes agree with the recorded run, and the offline checks passed again during review. The root requirements differ from three recorded package versions. Proposed final documentation supplies a separate recorded-version file. A clean-machine rebuild is still unverified, and the original PDFs must be supplied at an accessible corpus path. The review snapshot is not a complete clone with Git history.
+
+Q14. What would you change first if given more time?
+A. Improve source quotation fidelity and distinguish validation failure from missing evidence. Then rerun the existing cases and held-out questions, including attack variants. I would preserve the original run and version any code change separately so the presentation continues to match its evidence.
+
+4. WORKSHEET, REPOSITORY, PRESENTATION: ALIGNMENT FINDINGS
+
+The actual submitted-style worksheet was found in the supplied uploads. Its SHA256 is 0de1dda2aebdd4791d3fa3ad87e76830aae1b1c6b3648db1f2f29f1b52142777, matching the Mac filing output and the recorded Capstone 7.1 manifest entry. This is the MIT-formatted worksheet, not the separate generated recreation.
+
+Content check:
+Step 1 agrees with the implemented BM25 research-paper scenario and recorded corpus volume.
+Step 2 agrees with the trust-boundary prompts, input checks, retrieved IDs, quote validation, and bounded repair. The worksheet correctly distinguishes quote occurrence from claim support.
+Step 3 agrees with the exact cache, 64-entry capacity, 900-second expiration, refusal exclusion, and snapshot revalidation.
+Step 4's measured totals and A0/A3 examples agree with the saved records. The worksheet also states that the A0/B0 repeat pair did not become faster.
+Steps 5–6 acknowledge the B0 false rejection, PDF extraction warning, single-run limits, and future changes. The revised presentation preserves these limitations.
+
+The worksheet's completion checkboxes remain empty even though the response fields are filled. This is a presentation/administrative detail, not evidence that the work was not performed. Preserve the already submitted original. If the instructor requests a corrected form, version a new copy instead of altering the historical artifact.
+
+Additional presentation claims are identified as later review: the five-of-six ratings, warm-B0 quotation analysis, and independent recomputation of usage totals. The worksheet need not retroactively contain every later observation. Consistency means the claims agree and the added findings are traceable.
+
+We have not inspected a newly completed Module 8 preparation worksheet. The blank template and earlier preparation draft are different artifacts from the submitted Module 7.1 worksheet. If a final Module 8 worksheet is part of the intended submission, it must also be compared before declaring full alignment.
+
+The latest supplied repository snapshot is local commit 0a18408. Its collector lists zero remotes. No later commit, GitHub push, reviewer access, final MP4, or Canvas final submission is verified here. This package assembles the README, recorded requirements and deck for filing on the Mac. A final local commit, publication and reviewer access remain separate steps.
+
+The second-review packet deliberately separates repository_snapshot (unchanged evidence), submitted_worksheet (verified original), presentation_candidate (this revision), proposed_documentation (unapplied edits), and prior_review (earlier conclusions). It contains no source PDF corpus or Git object history. Earlier Capstones 1.1 and 4.1 exist according to the supplied terminal listing but are not independently audited in this selected packet.
+
+5. INDEPENDENT REVIEW AND SUBMISSION DECISION
+
+Use Claude or Muse as a skeptical second reviewer. Ask it to derive findings from code and raw evidence before reading our verdicts. Require file references and classify each objection as supported, unsupported, or needing missing evidence. A second model's agreement is not a ground-truth evaluation; it is useful when it catches a specific reproducible discrepancy.
+
+Resolve blockers before recording: factual contradictions, incorrect numbers, misrepresented capabilities, missing required deliverables, and reviewer-access failure. Address important clarity issues next. Cosmetic preferences should not trigger code changes or new experiments just before submission.
+
+Request an extension if a substantive blocker or required access/recording cannot be completed before the actual Canvas deadline. No extension is requested by this document. Do not expand the project into production deployment solely to improve the presentation.
+
+Rehearsal: the revised 12-slide narration has an 8:40 pacing plan. Time it aloud in Council's own voice. Use the long Q&A for preparation, not as extra narration on every slide. Explain the evidence like a site walk: identify the issue, point to the record, explain the decision and its consequence.
+
+SOURCE MAP
+Repository paths are relative to the supplied repository_snapshot folder.
+Implementation: capstone-project/capstone-checkpoint-7.1/capstone_checkpoint_7_1_production_ready.py
+Run: capstone-project/capstone-checkpoint-7.1/results/production_20261006T184600_523291Z/
+Counts/timing: Run/metrics.json and each case's metrics.json/call records.
+Case definitions: Run/run_config.json.
+Retrieved evidence: each case's result.json and tool records.
+Offline evidence: Run/offline_checks.json and implementation --self-test.
+Prior ratings: capstone-project/capstone-checkpoint-7.1/CASE_REVIEW.json.
+Prior interpretation: capstone-project/capstone-checkpoint-7.1/EVIDENCE_REVIEW.md.
+Corpus preparation: Run/preparation.json.
+Historical source/version linkage: Run/run_config.json and ARTIFACT_MANIFEST_7_1.sha256.
+Lab guidance: supplied Lab 8.2 transcript, facilitator discussion around 10:14–12:50.
+
+FINAL FILING ADDENDUM
+The independent review has now been received. See REVIEW_RECONCILIATION.txt for accepted findings and corrections. This filing revision preserves the 8:40 pacing target and uses 1,216 spoken words. The review packet described above is a separate earlier evidence export; it is not this installer.

@@ -1,0 +1,38 @@
+CAPSTONE 8: SECOND-REVIEW RECONCILIATION
+Council Wooten III | October 14, 2026 UTC
+
+Purpose
+Record which findings from the supplied Claude review were accepted, qualified, or corrected. The review is another model's assessment, not faculty grading or independent human domain evaluation. The original review is preserved separately under review/CLAUDE_REVIEW_ORIGINAL.txt. Read this reconciliation before reusing that review's suggested oral answers.
+
+Verified core measurements
+Recomputed from the saved per-case measurements and raw successful call usage:
+Baseline, six cases: 23.078396 seconds, 17 chat calls, 28,021 tokens.
+Guarded cold, six cases: 30.919602 seconds, 20 calls, 45,386 tokens.
+Guarded repeat, two cases: 15.172461 seconds, 5 calls, 20,672 tokens.
+The cold increases are approximately 33.98% in request time and 61.97% in tokens in this single run. They are not invoice-based cost measurements.
+
+Accepted findings and handling
+1. Final repository assembly: the review packet separated proposed documentation from presentation assets intentionally. This filing package puts the linked files together and verifies the Module 8 README links and the new root entry point. It does not claim to audit all historical README links or all previous checkpoint findings.
+2. Rehearsal: the updated narration is 1,216 spoken words with an 8:40 pacing plan. An actual timed rehearsal remains necessary. A rate near 140 words/minute fits that target; pauses and demonstrations consume additional time. If over 9:30, shorten explanatory repetitions on slides 4, 6, and 10 before recording.
+3. Warm B0 repair: the first draft had one mismatching quotation among seven citations; the repair had six among eight. This illustrates why repaired answers must pass validation again. It does not prove repair prompts generally worsen answers.
+4. Refusal wording: insufficient_evidence also covers output validation failure. B0's key evidence was available, so future messaging should distinguish those conditions.
+5. Scope screening: guarded A1 performed retrieval before returning out_of_scope. A pre-check is a candidate for evaluation, not a guaranteed quality-preserving optimization.
+6. Extraction warning: the warning was observed in Council's supplied terminal transcript from the recorded run. preparation.json stores only readable page count and elapsed preparation time. The final README and narration identify that source distinction. The terminal excerpt included here is a copied excerpt from the conversation, not a newly recovered original console log.
+
+Corrections to the second review
+Cache freshness: its last oral answer says a changed PDF cannot cause a stale hit. That is too strong. ExactCache captures context and revalidates against loaded document text. Disk changes require corpus reload and a refreshed fingerprint/context. A namespace is not user authorization, and a time limit is not proof of freshness.
+A0 timing: the review's oral answer gives approximately 5.5 seconds before caching. Actual baseline A0 was 4.396399 seconds, guarded-cold A0 was 3.525653 seconds, and the valid exact repeat was 0.008214 seconds.
+A3 attribution: the guarded answer did not attempt a fabricated citation, and it recorded zero validation rejections. That observation does not isolate the prompt as the causal protection. Prompts, context/answer format and validation changed together. The live result belongs to the guarded system as a whole.
+Cost: use measured tokens and time. Avoid describing unverified billed-dollar differences as established costs.
+Retrieval: identical B0 baseline/guarded-cold page IDs, including key supporting pages, diagnose that specific failure. They do not prove every page was relevant or that BM25 is sufficient across all corpus queries. The warm-B0 page set differs.
+Quote matching: validation compares substrings after whitespace normalization, not raw byte substrings. Missing spaces, ligatures, hyphenation and case changes can still prevent matching.
+Cache trade-off: B0's uncached execution explains where the repeated-pair time went, but the single run cannot attribute all timing differences solely to refusal caching. Provider/model variability remains a factor.
+Source records: hashes establish identity for comparison, not immutability or truth of the contents. Git history and file hashes make changes traceable when properly maintained.
+Slide references: several slide numbers and folder aliases in the second review do not match the delivered deck. SLIDE_EVIDENCE.csv provides the actual slide numbers and repository paths.
+Guard scope: fabricated source-ID checks are enforceable within this code path. They do not prove general security or that every accepted claim follows from its quotation. Do not turn the defined fail-closed behavior into a universal safety guarantee.
+
+Disposition
+No evidence discrepancy in the recorded core totals requires a new model run. Preserve the measured implementation and historical worksheet. The presentation explains conditional improvements and a documented false rejection. Remaining work is actual rehearsal/recording, final Git filing/commit, publication-scope inspection, GitHub reviewer access, and submission-link verification. These are not verified by this package.
+
+Worksheet alignment
+The original Module 7.1 worksheet SHA256 is 0de1dda2aebdd4791d3fa3ad87e76830aae1b1c6b3648db1f2f29f1b52142777. Its substantive answers agree with the code and recorded results. Its completion boxes are unmarked; the historical submission is preserved. A newly completed Module 8 worksheet has not been provided for review. Check actual Canvas requirements before treating any preparation worksheet as a required final deliverable.

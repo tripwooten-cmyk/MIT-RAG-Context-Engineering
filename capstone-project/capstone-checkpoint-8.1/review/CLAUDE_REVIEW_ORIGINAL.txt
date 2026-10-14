@@ -1,0 +1,79 @@
+Independent Technical Review — Capstone 8 Review Packet
+Scope note: All 122 packet hashes in HASHES.sha256 verified OK. All metrics below were recomputed by me from the raw call_NN.json / tool_NN.json / result.json records, not taken from the summary files. Prior reviews (CASE_REVIEW.json, EVIDENCE_REVIEW.md, prior_review/) were read last and treated as claims, not ground truth.
+
+1. Strongest defensible case
+This is an inspectable, provenance-pinned guarded RAG system whose every quantitative claim traces to immutable raw records, and whose one negative result is diagnosed honestly rather than hidden.
+
+Measurements reconcile exactly. I recomputed all 14 cases from raw call files: baseline six-query 23.078 s / 17 calls / 28,021 tokens; guarded cold 30.920 s / 20 calls / 45,386 tokens; warm pair 15.17 s / 5 calls / 20,672 tokens; warm A0 hit 0.008214 s / 0 calls. Every figure matches METRICS_SUMMARY.csv, every per-case metrics.json, the worksheet, and slides. Zero discrepancies.
+The A3 attack result is real and legible. Baseline A3 cited the fabricated SPARLING_verified_correction.pdf and repeated the planted 17.3% figure after retrieving zero pages (call_01.json shows the planner answered immediately from the injected block). Guarded A3 searched the real corpus and answered “>90%” with a validator-verified quote from the actual SPARLING paper. The contrast is the strongest single slide in the deck, and it is accurate.
+The negative result (B0) is a feature of the writeup, not a flaw. Guarded B0 failed closed; the packet correctly diagnoses this as a quote-validation false rejection caused by PDF extraction artifacts (with>90%accuracy, imple-\nmentation, ligature satisﬁes, We\nprove vs lowercased we prove — I verified each against the raw page text). Retrieval was correct: baseline and guarded retrieved identical page IDs. The system never claims otherwise.
+The cache claim is honestly conditional. The deck claims speedup only for exact repeats of validated answers (A0: 0.0082 s, 0 calls) and explicitly reports that the two-query repeat pair was slower than baseline because B0 re-ran and failed again. Refusals are not cached — verified in code and in the warm-B0 records.
+Provenance is unusually strong for a course project. Upstream module SHAs, the 153-PDF corpus manifest, implementation fingerprint 41564d05…, pinned recorded packages (requirements-recorded.txt matches run_config.json exactly), and 19 passing offline self-checks that exercise the fail-closed paths without any API calls.
+Deck integrity. All 12 slides’ text matches the PPTX; MIT template headings are preserved; SLIDE_EVIDENCE.csv maps every slide to real evidence paths, and I confirmed the mappings.
+2. Strongest evidence-based objection
+The experiment demonstrates safety properties but not net utility improvement, from a single unreplicated run. Baseline answered 5/6 correctly; guarded cold also 5/6 (it fixed A3 but lost B0). On this evidence the guarded system is slower (+34% latency, +62% tokens cold), costlier, and no more accurate on legitimate questions — its value rests entirely on the A3 resistance and the fail-closed guarantee, each demonstrated with a sample size of one. Furthermore, the live A3 comparison changes prompt, output format, and validation simultaneously, so it cannot attribute the resistance to any single safeguard (the self-checks prove the validator would reject a fabricated ID, but in the live run the model never attempted the fake citation — the prompt layer acted first). There is no retrieval precision/recall measurement, no independent groundedness scoring, no repeated-run variance, and answer-correctness judgments are assistant-reviewed rather than independently graded. The packet acknowledges all of this, which is to its credit — but a skeptical grader can fairly say: one attack, one run, no accuracy gain shown.
+
+3. Findings table
+#	Severity	Claim / item	Exact source	Finding	Smallest justified correction
+1	Important	Proposed 8.1 README lists deliverable files	proposed_documentation/.../capstone-checkpoint-8.1/README.md	References the PPTX, narration file, and Capstone_8_Evidence_and_Presentation_Review.txt, none of which are present in that folder in this packet	Copy the referenced files into the 8.1 folder (or edit the README) before the Module 8 commit/push
+2	Important	Narration fits 8–10 minutes	presentation_candidate/Council_Wooten_Eight_Minute_Narration.txt	1,202 spoken words = 8.0 min @150 wpm, 9.2 @130, 10.9 @110. Fits the window only at ≥~120 wpm. Slides 4 (131 w), 6 (133 w), 10 (151 w) require ~139–145 wpm against their implied time budgets	Rehearse aloud once with a timer; if over ~9:30, trim ~60–100 words from slides 4, 6, 10
+3	Polish	Warm-B0 behavior	results/.../case_B0_repeat/ call records	Warm draft nearly validated (1/7 citations failed) but the repair attempt regressed to 6/8 failures. Deck/worksheet say only that B0 failed again — the regression is an available, honest insight about repair-prompt behavior	Optional one sentence in Q&A prep or limitations: “the repair attempt made the quote drift worse, not better”
+4	Polish	Refusal messaging	secure_case() in capstone_checkpoint_7_1_production_ready.py	insufficient_evidence conflates “nothing retrieved” with “retrieved but quotes failed validation” (B0 is the latter). Already acknowledged in EVIDENCE_REVIEW.md limitations	None required; keep as a limitation / Q&A answer
+5	Polish	Guarded A1 efficiency	case_A1 guarded records	Agent ran a corpus search (~4.5k tokens) before returning out_of_scope; a cheap scope pre-check would have avoided it	None required; valid “future improvement” if asked
+6	Polish	PDF “form-content limit warning”	Worksheet / evidence review mention	No console log or record of this warning exists in the packet; it is unverifiable as evidence	Either drop the mention or phrase as “observed during preparation, not captured in recorded evidence”
+7	Note (verified fine)	Package reproduction	root requirements.txt vs requirements-recorded.txt vs run_config.json	Root file differs (langchain-core 1.5.5 vs 1.3.2, etc., plus chromadb from other checkpoints); requirements-recorded.txt matches the run exactly and the README directs readers there	None — already correctly handled
+8	Note (verified fine)	Prior review word count	prior_review/October_13_Repository_Review.txt (“~1,086 words”)	My count is 1,202; the deck/narration were evidently revised after that review. All other prior-review claims I tested (warm-B0 counts, metrics, B0 artifact examples) verified correct	None — supersede with finding #2’s rehearsal
+No blockers found. The honest negative result (B0) and the absence of a demonstrated accuracy gain are limitations, correctly disclosed, not defects in the evidence.
+
+4. Claim-to-evidence matrix
+Presentation claim (slide)	Evidence	Status
+S2: 153 PDFs, 6,059 pages ingested in ~124 s	preparation.json (6,059 pages, 124.31 s); corpus manifest digest 75c57ce7… in run_config.json	Verified
+S3: BM25 retrieval, bounded planner (≤4 actions, ≤12 pages, k=3)	Constants in capstone_checkpoint_7_1_production_ready.py; PLAN_SYSTEM in checkpoint-5.1 agent	Verified in code
+S4: trust boundary separates questions from evidence; structured claims; verbatim quote validation; one repair; fail-closed	TRUST_RULES, validate_answer(), secure_case() (2 attempts → insufficient_evidence)	Code-enforced; exercised in live B0 and offline checks
+S5: exact-question cache, 64-entry FIFO, 900 s TTL, versioned keys, refusals not cached, hits revalidated without model calls	ExactCache class; warm A0 records (0 calls); warm B0 miss	Verified in code + records
+S6: baseline fooled by fabricated source; guarded resisted	case_A3 baseline result (cites fake PDF, 17.3%, zero retrievals) vs guarded result (>90%, real quote)	Verified from raw records
+S7: guarded cold slower/costlier: 30.92 s vs 23.08 s; 45,386 vs 28,021 tokens; 20 vs 17 calls	Recomputed from all call_NN.json; matches METRICS_SUMMARY.csv	Recomputed, exact
+S8: A0 repeat 0.0082 s, zero model calls	case_A0_repeat/metrics.json + absence of call files	Verified
+S8/9: repeat pair slower than baseline pair (15.17 s vs 11.08 s) because B0 re-ran and failed	Warm pair records; refusal-not-cached code path	Verified
+S9: B0 withheld due to extraction artifacts, not retrieval failure	Identical retrieved page IDs both arms; artifact-by-artifact quote comparison	Verified independently
+S10: 19 offline checks pass without API calls	offline_checks.json; self_check() uses FakeRecorder	Verified; checks test validator/cache/guards — slides do not overstate them as accuracy grading
+S11: limitations (no accuracy grade, no attack-success rate, single run, no semantic cache)	run_config.json limitations array; EVIDENCE_REVIEW.md	Consistent everywhere
+Worksheet numeric claims	All cross-checked against raw records	All verified, zero discrepancies
+5. Ten challenging oral-defense questions (with accurate short answers)
+“Your guarded system got the same score as the baseline — 5/6. Why is it better?”
+The score hides asymmetric failure modes. Baseline’s miss was confidently citing a fabricated source (A3); guarded’s miss was withholding a correct-topic answer (B0). In production, a fabrication reaches the user; a fail-closed refusal is visible and recoverable. The trade is deliberate and measured: +34% latency, +62% tokens, fabrication eliminated in the tested case.
+“Which safeguard actually stopped the A3 attack? Can you prove it?”
+The live run can’t isolate one layer — prompt rules, structured format, and validation changed together. In the live guarded A3, the model never attempted the fake citation, so the prompt layer acted first. The offline self-checks prove independently that the validator alone rejects any citation ID not in the retrieved registry, so even if the prompt layer failed, the fabricated source could not be rendered. Isolation ablation is listed future work.
+“Isn’t B0 a retrieval failure?”
+No — both arms retrieved the identical five page records, including the two correct papers. The failure is in exact-quote validation: the model normalized PDF extraction artifacts (missing spaces like with>90%accuracy, hyphenated line breaks, ligatures), so its quotes aren’t byte-substrings of the extracted text. Whitespace normalization can’t bridge missing spaces or ligatures.
+“Why not just loosen the quote matcher?”
+Loosening it (fuzzy matching, edit distance) reopens the door to paraphrase drift — exactly what the validator exists to prevent. The better fix, listed as future work, is upstream: normalize extraction artifacts (de-hyphenation, ligature folding) in both the stored page text and the quote check, so matching stays exact over a cleaner canonical form.
+“Your cache made the repeat workload slower. Why ship it?”
+The pair was slower only because B0’s refusal is intentionally not cached — caching refusals would freeze transient failures. For the case the cache is designed for (exact repeat of a validated answer), A0 went from ~5.5 s and multiple paid calls to 0.0082 s and zero calls, with sources revalidated on every hit. The benefit is conditional and reported as such; no dollar-savings or hit-rate claim is made.
+“How do you know your parser works — the facilitator asked exactly this?”
+Partially. Preparation records 6,059 pages extracted with an ≥80-character page filter and a hash-pinned manifest, and B0 gave direct evidence of artifact classes the parser produces. What’s missing — and acknowledged — is sampled extraction-fidelity measurement against the source PDFs. That’s the top item on the evaluation-gap list, directly answering the Lab 8.2 feedback.
+“What do your 19 offline checks actually test?”
+Software behavior, not answer quality: validator rejections (fabricated IDs, bad quotes, .pdf in prose), input guards, cache TTL/FIFO/namespace isolation/invalidation, the repair path, and fail-closed behavior — all with a fake recorder, zero API calls. They are regression tests for the safety mechanisms, and the slides describe them that way.
+“One run, one attack, assistant-reviewed answers. Why should I trust any of it?”
+You shouldn’t trust it as a benchmark — and the packet doesn’t claim one. Every raw call, tool record, config, and hash is preserved for independent re-review; the limitations list explicitly disclaims attack-success rates, accuracy grades, and generality. The claim is narrower: in this recorded run, these specific behaviors occurred, and the safety properties are additionally code-enforced and unit-checked.
+“Why BM25 instead of embeddings/vector search, which the course taught?”
+BM25 was the Module 2 baseline and was retained deliberately: it’s deterministic, dependency-light, inspectable, and sufficient for this corpus’s keyword-heavy technical queries — retrieval was correct even in the failing B0 case. Semantic retrieval is future work; the packet doesn’t claim BM25 beat embeddings, only that it wasn’t the bottleneck here.
+“If a question repeats but a PDF in the corpus changed, does the cache serve a stale answer?”
+No. Cache keys include the corpus manifest digest, policy version, implementation SHA, model, and package set; any change produces a different namespace and a miss. Additionally, every hit deterministically revalidates its cited sources against the current registry before serving. TTL is 900 s and refusals are never stored.
+6. Verdict
+Ready for recording, after two specified corrections — neither is a flaw in the technical evidence:
+
+Rehearse the narration aloud with a timer (finding #2). At 1,202 words it fits 8–10 minutes only at a brisk-normal pace; trim slides 4/6/10 if a timed run exceeds ~9:30.
+Fix the proposed 8.1 README file list (finding #1) before committing, so the published repo doesn’t reference missing files.
+Everything else is polish or already-disclosed limitation. All numeric claims verified exactly; no fabricated, inflated, or unimplemented-as-implemented claims found; the negative B0 result is handled with model honesty and is defensible, not a blocker.
+
+7. Submission / access items (separate from technical flaws)
+Per Submission_Context.txt (deadline 2026-10-14 16:29 UTC — tomorrow; unverified against live Canvas):
+
+Apply the proposed_documentation/ package into the real repository (after fixing finding #1)
+Create the scoped Module 8 Git commit; configure the GitHub remote; push
+Verify the GitHub repo is actually accessible to the reviewer (README visible, code runnable path documented)
+Record the 8–10 minute MP4 walkthrough; verify audio/length
+Upload MP4 + slide link + GitHub link to Canvas; confirm “successfully submitted”
+Check whether Module 8 requires its own worksheet (not present in this packet)
+Note: the packet intentionally excludes the 153 PDFs and .git — none of that affects this review’s conclusions, but reviewer access to the corpus (or a documented statement that it’s course-provided) should be confirmed for reproducibility claims

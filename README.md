@@ -1,11 +1,15 @@
 # MIT xPRO RAG and Context Engineering
 
+## Final capstone reviewer entry point
+
+Start with the [final presentation, execution guidance and evidence index](capstone-project/capstone-checkpoint-8.1/README.md). The measured implementation remains in Checkpoint 7.1. Recorded package versions are documented separately from the historical root requirements.txt. Earlier checkpoint history is preserved below.
+
 **Student:** Council Wooten III
 **Purpose:** Capstone checkpoints, implementation files, laboratory exercises, evaluation evidence, and supporting documentation for the MIT xPRO RAG and Context Engineering program.
 
 ## Repository status
 
-This repository contains capstone work through Checkpoint 7.1. Completed checkpoints are saved in descriptive local Git commits. The established policy reserves GitHub remote publication and submission for Module 8. See individual checkpoint evidence and commit history for verification; repository files do not establish learning-platform submission.
+This repository contains the measured capstone implementation through Checkpoint 7.1 and final presentation materials in Checkpoint 8.1. Completed checkpoints are saved in descriptive local Git commits. The established policy reserves GitHub remote publication and submission for Module 8. See individual checkpoint evidence and commit history for verification; repository files do not establish learning-platform submission.
 
 ## Capstone scenario
 
