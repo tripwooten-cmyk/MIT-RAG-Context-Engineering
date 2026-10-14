@@ -6,7 +6,8 @@ The system helps readers locate and compare research findings in the original 15
 
 ## Start here
 
-- [Presentation](Council_Wooten_Final_Capstone.pptx), with narration and evidence references in speaker notes.
+- [Submission presentation](Council_Wooten_Final_Capstone_Submission.pptx), with no speaker-note text.
+- [Presenter copy](Council_Wooten_Final_Capstone.pptx), retaining narration and evidence references in notes.
 - [PDF display backup](Council_Wooten_Final_Capstone_Backup.pdf).
 - [Rehearsal narration](Council_Wooten_Eight_Minute_Narration.txt), with an 8:40 pacing plan. Actual recording length must be timed.
 - [Engineering rationale and oral-defense guide](Capstone_Defense_and_Alignment_Review.txt).
@@ -85,3 +86,11 @@ The final documentation and slides do not modify measured code or historical res
 The second model review and reconciliation are retained under this folder. The original review contains identified errors; use REVIEW_RECONCILIATION.txt before repeating its claims. The slide and narration revision clarifies the source of the extraction warning. No measured code or historical run was changed. [ARTIFACT_MANIFEST_8_1.sha256](ARTIFACT_MANIFEST_8_1.sha256) records the assembled artifact hashes.
 
 The recording link belongs in the final Canvas submission. A video is not included in this folder yet. Full GitHub publication, reviewer permissions, and Canvas receipt remain separate completion steps.
+
+## Narration refinement
+
+The narration and PowerPoint speaker notes emphasize lessons carried forward from the earlier checkpoints: distinguishing retrieval from generation failures, tracing refinements to specific defects, inspecting evidence behind aggregate scores, and rejecting fabricated citations even when an answer appears correct. This editorial revision changes no visible slide, measured implementation, recorded result, or submitted worksheet. The revised narration contains 1,218 spoken words with the same 8:40 pacing target; actual recording time must be measured. Checkpoint 7.1 grading remains pending as reported by Council at the time of this revision.
+
+## Submission copy
+
+The submission PowerPoint preserves all 12 visible slides and removes speaker-note text. Every slide render was compared with the presenter copy and is pixel-identical. The PDF backup remains visually applicable. The separate narration is a reading aid; it is not part of the slide image or required spoken content beyond the labeled script. The submission deck contains no ChatGPT text in its XML parts. This check does not claim the entire repository has no references to AI-assisted evaluation.

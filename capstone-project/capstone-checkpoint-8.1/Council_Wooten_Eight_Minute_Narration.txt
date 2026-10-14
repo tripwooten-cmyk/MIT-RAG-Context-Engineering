@@ -4,6 +4,8 @@ Council Wooten III
 
 Rehearsal plan: 8 minutes 40 seconds. Actual timing must be measured aloud.
 
+Read the spoken paragraphs only. Headings and understanding checks are rehearsal aids.
+
 
 
 SLIDE 1: Capstone Design Review Presentation (0:00–0:15)
@@ -18,7 +20,7 @@ UNDERSTANDING CHECK: State the project and purpose in one breath.
 
 SLIDE 2: Designing and Evaluating a Retrieval-Augmented LLM System (0:15–0:35)
 
-My system helps readers locate and compare research findings by connecting answers to retrieved paper pages. In construction, I would ask which drawing or specification supports a decision. Here, I ask which paper and page support an answer. The same research-paper scenario continues through my checkpoints.
+My system helps readers locate and compare research findings, with answers tied to paper pages. In construction, I ask which drawing or specification supports a decision. Here, I ask which paper and page support an answer. An early lesson stayed with me: a confident answer built on the wrong evidence can be more dangerous than admitting uncertainty.
 
 
 
@@ -28,7 +30,7 @@ UNDERSTANDING CHECK: Explain why traceability matters before describing the soft
 
 SLIDE 3: The Problem (0:35–1:05)
 
-The intended user is a reader searching across research papers. This collection contains 153 PDFs and produced 6,059 readable pages. A question might ask for one reported result or compare the approaches in two papers. Finding a document is only the first step. The answer must use the right passage and preserve its meaning. Faster evidence review is the intended business value. I have not measured customer time savings, and the page count does not prove that every table or image was extracted correctly.
+The intended user is a reader searching across research papers. I kept the same research-paper scenario throughout the checkpoints. This collection contains 153 PDFs and produced 6,059 readable pages. Questions ask for a reported result or compare methods across papers. Finding a document is only the first step. The answer must use the right passage and preserve its meaning. Faster evidence review is the intended business value, but customer time savings remain unmeasured. The page count also does not prove that every table or image was extracted correctly.
 
 
 
@@ -48,7 +50,7 @@ UNDERSTANDING CHECK: Explain retrieval, model planning, and deterministic checks
 
 SLIDE 5: The Solution: validation (2:00–2:45)
 
-The draft contains claims, source identifiers, and quotations. Code verifies that each source was retrieved and that its quotation occurs on the cited page after whitespace normalization. The application then supplies the filename and physical page number. A failed draft gets one repair attempt. A second failure withholds the answer, and refusals do not enter the cache. Accepted answers can remain for fifteen minutes, with a maximum of sixty-four entries. This resembles checking a submittal against its reference. The check establishes source occurrence. Human review still has to determine whether the passage supports the claim and whether the answer is complete.
+The draft contains claims, source identifiers, and quotations. Code checks that each source was retrieved and that its quotation appears on the cited page after normalizing whitespace. The application supplies the filename and physical page number. A failed draft gets one repair attempt. A second failure withholds the answer. Refusals do not enter the cache. Accepted answers can remain for fifteen minutes, with a maximum of sixty-four entries. This resembles checking a submittal against its reference. Even a quotation copied correctly can be used to support the wrong conclusion. Reviewing the claim and its meaning remains a separate responsibility.
 
 
 
@@ -58,7 +60,7 @@ UNDERSTANDING CHECK: Why can a valid quotation accompany a misleading interpreta
 
 SLIDE 6: Retrieval and Evaluation: evaluation stages (2:45–3:40)
 
-I evaluate five separate questions. Did ingestion preserve the source? Did retrieval deliver the needed evidence? Did the answer use it correctly? Did the software enforce its rules? And what did the request cost in time and tokens? The page count establishes volume. A warning appeared in the terminal during extraction; completeness remains unscored. For B0, both versions retrieved the same five pages, including key support. The answer review found five of six cases meeting criteria in each version, with different failures. Those are assistant-reviewed development cases, not an independent accuracy benchmark. Nineteen offline checks verify defined validation, cache, repair, and usage behavior. They do not measure retrieval accuracy. The fourteen live requests provide a separate record of actual outputs and resource use. This separation lets me locate a failure instead of hiding it behind one score.
+Evaluation became more useful when I separated the stages. Did PDF extraction preserve the source? Did retrieval find the needed evidence? Did the answer use it correctly? Did the software enforce its rules? What time and tokens did the request consume? Earlier checkpoints taught me to distinguish retrieving the wrong paper from misinterpreting a paper. Here, extraction completeness remains unscored. In B0, both versions retrieved the same five pages, including key support. Assistant review rated five of six development cases as meeting criteria in each version, with different failures. This is not an independent accuracy benchmark. The nineteen offline checks test validation, caching, repair, and usage accounting. They do not measure retrieval accuracy. Fourteen live requests provide a separate record of actual answers and resource use.
 
 
 
@@ -78,7 +80,7 @@ UNDERSTANDING CHECK: Explain the trust boundary and why the comparison does not 
 
 SLIDE 8: Retrieval and Evaluation: false rejection (4:25–5:15)
 
-Case B0 asked for a comparison of SPARLING and The Sketching Approach to Program Synthesis. The baseline and guarded cold run retrieved the same five pages, including the key supporting pages. The baseline produced a useful comparison. The guarded draft and its repair altered quotation text, so validation rejected both and withheld the answer. Differences included capitalization, spacing, PDF hyphenation, and ligatures. My diagnostic question is: did the system receive the wrong evidence, or mishandle the correct evidence? Here, relevant evidence arrived. The failure occurred where generation met quotation validation. Searching again would not directly fix that mismatch. The next experiment is extracting source spans or carefully normalizing PDF artifacts, while preserving protection against changed facts.
+B0 asked for a comparison of SPARLING and The Sketching Approach to Program Synthesis. The baseline and guarded cold run retrieved the same five pages, including the key support. The baseline produced a useful comparison. The guarded draft and its repair changed quotation text. Validation rejected both, and the system withheld the answer. Differences included capitalization, spacing, PDF hyphenation, and joined characters called ligatures. Did the system receive the wrong evidence, or mishandle the correct evidence? Here, relevant evidence arrived. The failure occurred where answer generation met quotation validation. Searching again would not directly fix that mismatch. My next test would copy passages directly from the source, or narrowly correct PDF text artifacts while checking that facts remain unchanged.
 
 
 
@@ -88,7 +90,7 @@ UNDERSTANDING CHECK: Explain the failure layer without calling it a retrieval mi
 
 SLIDE 9: Retrieval and Evaluation: performance (5:15–6:10)
 
-The six-question guarded workload took about thirty-one seconds versus twenty-three for baseline. Chat calls rose from seventeen to twenty, and tokens rose from about twenty-eight thousand to forty-five thousand. Caching helped A0 repeat in roughly eight milliseconds with zero model calls. But B0 never passed validation and stayed uncached. Its repeat ran the full workflow. For the same two questions, baseline took about eleven seconds, while guarded repeats took about fifteen seconds. Fewer calls did not produce an overall speedup. These request timings exclude corpus preparation and include provider variability. Token counts are measured usage, not verified dollar savings. The lesson is to evaluate the workload the user actually experiences, including failures and cache misses.
+The six-question guarded workload took about thirty-one seconds versus twenty-three for baseline. Chat calls rose from seventeen to twenty. Tokens rose from about twenty-eight thousand to forty-five thousand. A0 repeated in roughly eight milliseconds with zero model calls. B0 failed validation, stayed uncached, and repeated the full workflow. For those same two questions, baseline took about eleven seconds and guarded repeats took about fifteen. Fewer calls did not produce an overall speedup. That carries forward another checkpoint lesson: a better summary number does not prove a particular failure was fixed. These timings exclude corpus preparation and include provider variability. Token counts are measured usage, not verified dollar savings. The comparison has to include the failures and cache misses a user actually experiences.
 
 
 
@@ -98,7 +100,7 @@ UNDERSTANDING CHECK: Why must the comparison use the same questions, and why is 
 
 SLIDE 10: Engineering Decisions (6:10–7:15)
 
-These are deliberate choices with limits. First, I retained BM25 and the existing bounded agent to preserve the retrieval baseline while adding guards and caching. That gives an inspectable starting point. It does not prove BM25 beats vector or hybrid retrieval. A fair comparison would hold the corpus and test questions constant. Second, retrieved identifiers and exact quotations let code check source occurrence without another model judge. A judge might assess meaning more flexibly, but would add calls and its own errors. My strict approach exposed a real usability cost when B0 failed quotation matching. Third, the exact-question cache avoids semantic-match ambiguity and a model call on a valid hit. Lab 7.2 had shown that model-based cache validation could add substantial delay. Exact matching gives up reuse for paraphrases. I selected these choices for this controlled experiment, and the recorded workload shows exactly where they help and where they do not.
+Each refinement should address a specific failure and leave a record of what changed. I kept BM25 keyword retrieval and the existing agent so I could evaluate guards and caching against that baseline. This does not establish that BM25 beats vector or hybrid retrieval. Those alternatives need a separate comparison using the same corpus and questions. Second, checking retrieved source identifiers and quotations gives me rules I can inspect without another model judge. A judge might assess meaning more flexibly, but adds calls and its own errors. Strict quotation matching also has a cost: it rejected the useful B0 comparison. Third, an exact-question cache avoids uncertainty about whether two questions mean the same thing. A valid hit needs no model call, but paraphrases miss the cache. I kept prompts, JSON results, review notes, and call records so these decisions can be checked against what actually happened.
 
 
 
@@ -118,7 +120,7 @@ UNDERSTANDING CHECK: Name the next test and distinguish proposed client work fro
 
 SLIDE 12: Questions (8:10–8:40)
 
-The design rationale is inspectable evidence with bounded processing. The evaluation shows a resisted attack and successful exact reuse, alongside a useful comparison that the guard withheld. The trade-off is therefore mixed: five of six cases passed in each version, and the repeated pair took longer. My next step is to improve quotation fidelity, then repeat quality and workload evaluation. That is the engineering standard I want to carry into future LoudWire work: explain the decision, show the evidence, and test the correction. Thank you.
+My main lesson is to judge both the answer and the evidence behind it. A correct-looking answer with a fabricated citation is still a failure. This version resisted the recorded A3 attack and reused A0 without a model call. B0 showed the next problem to solve: preserving quotations accurately enough to return a useful comparison. I can explain where it failed and what I would test next. That is the standard I want to carry into LoudWire consulting. Thank you.
 
 
 

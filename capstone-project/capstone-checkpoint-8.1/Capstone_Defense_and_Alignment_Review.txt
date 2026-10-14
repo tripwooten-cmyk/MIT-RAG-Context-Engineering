@@ -178,3 +178,6 @@ Lab guidance: supplied Lab 8.2 transcript, facilitator discussion around 10:14â€
 
 FINAL FILING ADDENDUM
 The independent review has now been received. See REVIEW_RECONCILIATION.txt for accepted findings and corrections. This filing revision preserves the 8:40 pacing target and uses 1,216 spoken words. The review packet described above is a separate earlier evidence export; it is not this installer.
+
+NARRATION REFINEMENT â€” OCTOBER 14, 2026 UTC
+The current spoken script contains 1,218 words. This supersedes the earlier 1,216-word count above. Speaker notes reinforce diagnosis by failure layer, traceable refinements, and honest interpretation of evidence. Visible slides, raw results, implementation, and the submitted worksheet are unchanged. Checkpoint 7.1 grading remains pending as reported by Council. Instructor feedback on earlier checkpoints is not approval of the final implementation.
